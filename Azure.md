@@ -1,3 +1,12 @@
+# Resource Manager
+
+**Resource Groups** are at their simplest a logical collection of resources. There are a few rules for resource groups.
+- Resources can only exist in one resource group.
+- Resource Groups cannot be renamed.
+- Resource Groups can have resources of many different types (services).
+- Resource Groups can have resources from many different regions.
+
+
 # Azure VWAN
 
 Azure Virtual WAN is a networking service that allows you to centrally manage and configure routing for your hybrid and multicloud networks. With Virtual WAN, you can connect multiple virtual networks together under a single routing construct called a Virtual WAN hub. This hub acts as a central point that connects all of your spokes (virtual networks) together.
