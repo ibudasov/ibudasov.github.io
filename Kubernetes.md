@@ -8,6 +8,88 @@ kubectl get pods -w
 kubectl get pods -o wide
 ```
 
+# Workshop ACC ICT
+
+- kube was born in 2015
+- 110 pods per node by default
+
+Containers are not virtualisation, but isolation. 
+- each container is isolated and visible with PS
+- the goal is — immutable infrastructure
+
+Kettle vs pet
+- VMs are like pets - imperative
+- Containers are like kettle - declarative
+
+All the containers are similar
+- the same interface
+- possibly different implementations
+- windows is not ready for the containers
+- Open Container Initiative
+    - provides the same interface
+
+Container rules
+- dont run as root
+- stateless
+    - think of storing auth data in the container. Keep the session outside
+- one process per container, so it maps to the container architecture, and isolates
+- tag with a version, do not use `latest`
+- don't specify default vals
+- no `COPY . .`, because cache is not possible
+
+What k8s does not do
+- no logging monitoring or alerting
+- no app-level services. Only container level
+- does not deploy source code and does not build your app
+- limits the types of your apps
+- requires different way of thinking, processes building, cloud native
+    - you own it, you build it, you run it, end to end
+
+Business case
+- Cosystent across DTAP — dev, test, accept, production
+- quick iterations
+- HA
+- runs anywhere
+- improves quality
+- no vendor lock
+
+Network tools
+- Flannel
+- Callico
+
+Namespaces
+- separate set of pods
+- base for RBAC
+- boundary for resources
+- might be for environments
+- monitoring for separate namespace, logging also -- all isolated
+
+Services
+- load balancing
+- round robin
+- an endpoint for pods or ingress
+
+Ingress
+- advancel LB
+- Traefik
+- GatewayAPI
+
+Controllers
+- deployment
+    - define pods and strategy of deployment
+    - rollout
+- replica set -- part of deployment
+- stateful set
+    - gives the pods an name -- meaningful
+    - useful for cassandra in k8s
+- daemon set
+    - one instance per node
+
+Todo Research
+- Pod destruction budget
+- Affinity and anti-affinity
+
+
 # KEDA
 
 KEDA, or Kubernetes Event-Driven Autoscaling, is a Kubernetes-based solution for auto-scaling containerized applications in response to events from sources like message queues, databases, or serverless functions. It allows developers to dynamically scale their applications running on Kubernetes in response to events from external sources without having to change their application code. 
