@@ -1,4 +1,17 @@
+# PowerShell
+
+- can be connected to your Account/Subscription
+- got 
+  - `cmdlet`, which are modules
+    - modules can be installed and reused 
+- can do scripting (base for cmdlets)
+- can do pyping `$vm | Get-AzVMSize`
+- command outputs are objects `$vm = (Get-AzVM -Name "testvm-eus-01" -ResourceGroupName learn-bce21a4b-3352-4e88-8d15-680d3dc88c35)` 
+- Can be assigned to a variable, and then output as a whole or a part of it, a property `$vm.StorageProfile.OsDisk` 
+
 # Resource Manager
+
+> 💡 you can download resources as ARM JSON, edit it and redeploy
 
 **Resource Groups** are at their simplest a logical collection of resources. There are a few rules for resource groups.
 - Resources can only exist in one resource group.
@@ -6,6 +19,23 @@
 - Resource Groups can have resources of many different types (services).
 - Resource Groups can have resources from many different regions.
 
+**Temlates benefits**
+- Templates improve consistency. 
+- Templates help express complex deployments.
+- Templates reduce manual, error-prone tasks.
+- Templates are code.
+- Templates promote reuse
+- Templates are linkable. 
+- Templates simplify orchestration
+
+**Bicep**
+- is a domain-specific language (DSL) that uses declarative syntax 
+- is an abstraction over JSON of ARM
+- got:
+  - Simpler syntax
+  - Modules
+  - Auto dependency management
+  - Type validation
 
 # Azure VWAN
 
@@ -31,7 +61,7 @@ echo "source $(brew --prefix)/etc/bash_completion.d/az" >> ~/.zshrc
 az login
 az account list --query "[?user.name=='igor.budasov@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
 # https://learn.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles
-az ad sp create-for-rbac --name terraform-principal --role Contributor --scopes /subscriptions/___________
+az ad sp create-for-rbac --name terraform-principal --role Owner --scopes /subscriptions/___________
 
 export ARM_SUBSCRIPTION_ID="fe24d774-d2ae-43fe-aa52-a774cb448c6b"
 export ARM_TENANT_ID="6059c272-9568-4eea-9f5b-162aa2d8dc3b"
