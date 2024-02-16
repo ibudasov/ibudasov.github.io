@@ -1,3 +1,19 @@
+# RBAC
+
+> RBAC uses an allow model for access. By default everything is forbidden. Roles summarize: `read` + `write` might come from 2 different roles
+
+- Allow one user to manage VMs in a subscription and another user to manage virtual networks.
+- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
+- Allow a user to manage all resources in a resource group, such as VMs, websites, and virtual subnets.
+- Allow an application to access all resources in a resource group.
+
+
+# Policies
+
+- use a policy to restrict to which Azure regions you can deploy resources.
+- use a policy to restrict which types of virtual machine sizes can be deployed. 
+- use a policy to enforce naming conventions
+
 # PowerShell
 
 - can be connected to your Account/Subscription
@@ -11,15 +27,31 @@
 
 # Resource Manager
 
-> 💡 you can download resources as ARM JSON, edit it and redeploy
+> 💡 You can download resources as ARM JSON, edit it and redeploy
 
-**Resource Groups** are at their simplest a logical collection of resources. There are a few rules for resource groups.
+> 💡 Use parameters for settings that vary according to the environment
+
+## Resource Groups
+ are at their simplest a logical collection of resources. There are a few rules for resource groups.
 - Resources can only exist in one resource group.
 - Resource Groups cannot be renamed.
 - Resource Groups can have resources of many different types (services).
 - Resource Groups can have resources from many different regions.
+- If you delete a resource group, all resources contained within the group are also deleted.
+- There are a few factors that can play into the strategy you use to organize resources:
+  - **Authorizatios**: Because resource groups are a scope of RBAC, you can organize resources by who needs to administer them.
+  - **Lifecycle**: If you delete a resource group, you also delete all the resources in the group. Use this to your advantage, especially in areas where resources are more disposable, like non-production environments.
+  - **Billing**: placing resources in the same resource group is a way to group them for usage in billing reports.
 
-**Temlates benefits**
+## Tags
+ Use them for
+- department (like finance, marketing, and more)
+- environment (prod, test, dev)
+- cost center
+- lifecycle and automation (like shutdown and startup of virtual machines)
+- use Azure Policy to automatically add or enforce tags for resources
+
+## Temlates benefits
 - Templates improve consistency. 
 - Templates help express complex deployments.
 - Templates reduce manual, error-prone tasks.
@@ -28,7 +60,7 @@
 - Templates are linkable. 
 - Templates simplify orchestration
 
-**Bicep**
+## Bicep
 - is a domain-specific language (DSL) that uses declarative syntax 
 - is an abstraction over JSON of ARM
 - got:
