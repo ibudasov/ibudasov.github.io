@@ -92,6 +92,9 @@ echo "source $(brew --prefix)/etc/bash_completion.d/az" >> ~/.zshrc
 # https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash
 az login
 az account list --query "[?user.name=='igor.budasov@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
+
+az account set --subscription "4167d2fe-8b0c-banaan-acbe-0b613ec53c33"
+
 # https://learn.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles
 az ad sp create-for-rbac --name terraform-principal --role Owner --scopes /subscriptions/___________
 
