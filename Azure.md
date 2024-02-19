@@ -115,6 +115,47 @@ Azure Service Bus is a fully managed messaging and queuing service provided by M
 - **Integration**: It integrates well with other Azure services and on-premises systems. Events can be processed using services like Stream Analytics, Functions etc.
 - **Pricing**: It has a pay-as-you-go model based on the number of messages and storage used. No upfront costs or long-term commitments.
 
+## Features
+
+- Distributed transactions do not work in the cloud. Because there is no perfect transaction coordinator, and you cannot have XA transactio. JMS transactions are the alternative
+- Works with generic AMQP 1.0 — one of them is RabbitMQ
+- 99.995%
+
+### Queues
+- Exclusive lock for messages picked up by the consumers. This is not what Event Brokers like Kafka have. For Kafka the most important thing is the order. for ASB — exclusivity. This is why it is great for processing jobs. https://www.youtube.com/watch?v=LM7DByKOHBs 
+- Can buffer messages
+- Dead letter queue
+- Scheduled messages
+- Deferred messages — breaks the order of processing messages. Keeps the message save in the queue and processes it later
+- For low traffic queues there is a mechanism to have no listeners, but to publish an event about non-handled messages to EventGrid. This would wake up a Function App and it will pick up the message. Basically, the consumer on-call. Saves costs
+- Sessions — gives endless number of subqueues. Locks all the messages with this sessionId. Build for many concurrent workflows. You cannot build a separate queue for each of them. SO you can use the sessions. Sort of a context
+- Session State — stores 1 message transactionally, keeps the state, which you can acquire later
+- Transactions. Ususlly paired with DB transactions (called inner transaction). Might give you idempotence on the app level
+
+### Topics
+- are the same like queues on the Subscriber end
+- topics — are named multicast distribution points for messages
+  - Filter/Action — is for modifying messages on the flight
+- Subscriptions — are durable queues bound to topics through a collection of selection rules
+  - up to 2000 rules (is SQL statement of just sinple expression)
+
+## Architecture
+
+- 3 tiers
+  - gateway — exposed outside: AzPortal, API. Talks to AzActiveDirectory, and to Backend via AMQP
+    - conn management
+    - networking — ip filtering, vnet, PEP
+      - 💡 good for connecting 2 private subnets and transfer data. Easier to transfer data via ASB then to setup firewall rules, NAT, etc
+    - TLS (termination here). Good for security and integrity both
+    - Authorization
+    - Entity management
+    - HTTPS/WebSocket 
+    - AMPQ
+    - SBMP
+  - backend (broker)
+    - all the features are happening here
+  - storage
+
 
 # Azure EventHub
 
