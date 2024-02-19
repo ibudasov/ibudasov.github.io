@@ -89,6 +89,15 @@ Todo Research
 - Pod destruction budget
 - Affinity and anti-affinity
 
+# DAPR
+
+Dapr, which stands for Distributed Application Runtime, is an open-source project by Microsoft aimed at making it easier to build microservice applications. 
+
+Dapr provides a set of building blocks that simplify how you build and run distributed applications. These building blocks provide capabilities such as state management, service-to-service invocation, publish and subscribe messaging, and distributed tracing, among others.
+
+The goal of Dapr is to provide a platform-agnostic, language-agnostic framework that developers can use to build high-performance, scalable systems without having to worry about the underlying infrastructure. It provides a consistent approach to building and managing microservices across different environments (e.g., on-premises, in the cloud, and on the edge).
+
+Dapr can be used with various programming languages and frameworks, and it can run either in self-hosted mode or on Kubernetes.
 
 # KEDA
 
