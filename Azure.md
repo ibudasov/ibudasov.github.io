@@ -156,6 +156,10 @@ Azure Service Bus is a fully managed messaging and queuing service provided by M
     - all the features are happening here
   - storage
 
+# Azure Event Grid
+
+Azure Event Grid,  is a service that routes events from any source to any destination. It's designed to build applications with event-based architectures.
+
 
 # Azure EventHub
 
@@ -167,6 +171,14 @@ Azure Event Hubs is a fully managed event ingestion service that can receive and
 - **Processing**: Events can be consumed and processed from partitions in parallel using client libraries and services like Stream Analytics, Functions etc. This allows real-time or batch processing of streams.
 - **Reliability**: Events are replicated synchronously across data centers for reliability and availability even in case of regional outages.
 - **Pricing**: It has a pay-per-usage model based on throughput units and storage consumed. No upfront costs or long-term commitments.
+
+Features
+
+- accumulates events if the subscribers do not process them fast enough
+- PULL delivery for retrieving new messages
+- EventGrid might subscribe to the events
+- The events might use EventHubTrigger and use FunctionApp for processing
+- Event Hub is designed for high-throughput event streams, especially when your solution receives events faster than it can process them.
 
 # Azure Postgres
 
