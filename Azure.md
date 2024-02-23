@@ -1,3 +1,25 @@
+# Azure Policy
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/management-groups-aa92c04a.png)
+
+Considerations
+- custom hierarchies and groups. Align your Azure subscriptions by using custom hierarchies and grouping that meet your company's organizational structure and business scenarios. 
+- Consider policy inheritance. 
+- Consider compliance rules for different departments
+- Cost reporting 
+- Consider deployable resources — what precisely can be deployed
+- Consider location restrictions — where can be deployed
+- Consider rules enforcement — required tags or allowed values
+
+Create a policy
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/implement-azure-policy-b4a4a47c.png)
+
+- Step 1: Create policy definitions
+- Step 2: Create an initiative definition. An initiative definition has one or more policy definitions. 
+- Step 3: Scope the initiative definition. The scope determines what resources or grouping of resources are affected by the conditions of the policies.
+- Step 4: Determine compliance — You have your policies defined, your initiative definition created, and your policies assigned to affected resources. The last step is to evaluate the state of compliance for your scoped resources.
+
+
 # Subscription
 
 An Azure subscription is a logical unit of Azure services that's linked to an Azure account. An Azure account is an identity in Microsoft Entra ID or a directory that's trusted by Microsoft Entra ID, such as a work or school account. Subscriptions help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
