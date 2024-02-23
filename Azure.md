@@ -1,3 +1,33 @@
+# Entra ID
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
+
+- for internal SaaS applications
+- for the apps developed inside of the org
+- similar to Active Directory on-prem, but in the cloud
+
+Features
+- SSO
+- all the platforms
+- secure remote access by other apps
+- sensitive data protection
+- self-service
+
+Object Model
+- Identity — An identity is an object that can be authenticated. The identity can be a user with a username and password. Identities can also be applications or other servers that require authentication by using secret keys or certificates.
+- Account — An account is an identity that has data associated with it.
+- Microsoft Entra account — An Azure AD account is an identity that's created through Microsoft Entra ID or another Microsoft cloud service, such as Microsoft 365.
+- Azure tenant (directory) — An Azure tenant is a single dedicated and trusted instance of Microsoft Entra ID. Each tenant (also called a directory) represents a single organization. When your organization signs up for a Microsoft cloud service subscription, a new tenant is automatically created.
+- Subscription — An Azure subscription is used to pay for Azure cloud services. Each subscription is joined to a single tenant. You can have multiple subscriptions.
+
+AD vs Entra ID
+
+- Identity solution: AD DS is primarily a directory service, while Microsoft Entra ID is a full identity solution. 
+- Communication protocols: Because Microsoft Entra ID is based on HTTP and HTTPS, it doesn't use Kerberos authentication. Microsoft Entra ID implements HTTP and HTTPS protocols, such as SAML, WS-Federation, and OpenID Connect for authentication (and OAuth for authorization).
+- Federation services: Microsoft Entra ID includes federation services, and many third-party services like Facebook.
+- Flat structure: Microsoft Entra users and groups are created in a flat structure. 
+- Managed service: Microsoft Entra ID is a managed service. You manage only users, groups, and policies. 
+
 # RBAC
 
 > RBAC uses an allow model for access. By default everything is forbidden. Roles summarize: `read` + `write` might come from 2 different roles
