@@ -1,3 +1,25 @@
+# Subscription
+
+An Azure subscription is a logical unit of Azure services that's linked to an Azure account. An Azure account is an identity in Microsoft Entra ID or a directory that's trusted by Microsoft Entra ID, such as a work or school account. Subscriptions help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-subscriptions/media/azure-subscriptions-e855533e.png)
+
+Features 
+- Every Azure cloud service belongs to a subscription.
+- Each subscription can have a different billing and payment configuration.
+- Multiple subscriptions can be linked to the same Azure account.
+- More than one Azure account can be linked to the same subscription.
+- Billing for Azure services is done on a per-subscription basis.
+- If your Azure account is the only account associated with a subscription, you're responsible for the billing requirements.
+- Programmatic operations for a cloud service might require a subscription ID.
+
+How to save money
+
+- Reservations — Save money by paying ahead. 
+- Azure Credits — Use the monthly credit benefit to develop, test, and experiment with new solutions on Azure.
+- Azure regions —	Compare pricing across regions. Pricing can vary from one region to another
+- Budgets	— Apply the budgeting features in Microsoft Cost Management to help plan and drive organizational accountability. With budgets, you can account for the Azure services you consume or subscribe to during a specific period. 
+
 # Entra ID
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
@@ -27,6 +49,11 @@ AD vs Entra ID
 - Federation services: Microsoft Entra ID includes federation services, and many third-party services like Facebook.
 - Flat structure: Microsoft Entra users and groups are created in a flat structure. 
 - Managed service: Microsoft Entra ID is a managed service. You manage only users, groups, and policies. 
+
+User Account types
+- Cloud ID — A user account with a cloud identity is defined only in Microsoft Entra ID. 
+- Directore synchronized ID — User accounts that have a directory-synchronized identity are defined in an on-premises Active Directory
+- Guest User — Guest user accounts are defined outside Azure. Examples include user accounts from other cloud providers, and Microsoft accounts like an Xbox LIVE account. 
 
 # RBAC
 
