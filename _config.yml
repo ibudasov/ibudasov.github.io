@@ -1,3 +1,5 @@
 theme: jekyll-theme-cayman
 title: Igor Budasov
 description: Cloud Engineering, Operations, Security and Reliability
+plugins:
+- github-pages
