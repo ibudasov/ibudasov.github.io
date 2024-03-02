@@ -177,10 +177,10 @@ az account set --subscription "4167d2fe-8b0c-banaan-acbe-0b613ec53c33"
 # https://learn.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles
 az ad sp create-for-rbac --name terraform-principal --role Owner --scopes /subscriptions/___________
 
-export ARM_SUBSCRIPTION_ID="fe24d774-d2ae-43fe-aa52-a774cb448c6b"
-export ARM_TENANT_ID="6059c272-9568-4eea-9f5b-162aa2d8dc3b"
-export ARM_CLIENT_ID="fe24d774-d2ae-43fe-aa52-a774cb448c6b"
-export ARM_CLIENT_SECRET="tih8Q~3aYdSQfVwWSzT_Z3D..23D.QWqCfLS_cqe"
+export ARM_SUBSCRIPTION_ID="xxxxxxxx"
+export ARM_TENANT_ID="xxxxx"
+export ARM_CLIENT_ID="xxxxxx"
+export ARM_CLIENT_SECRET="xxxxxxx"
 ```
 
 # Azure ServiceBus
