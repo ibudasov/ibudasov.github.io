@@ -8,7 +8,11 @@
 
 ## OPS
 
+- [Terraform](Terraform.md)
+- [Kubernetes](Kubernetes.md)
 - [Helm](Helm.md)
+- [GitOps](GitOps.md)
+- [Spacelift](Spacelift.md)
 
 ## Soft Skills
 
@@ -18,3 +22,9 @@
 ## Business Domains
 
 - [Electric Vehicles](ElectricVehicles.md)
+
+## General
+
+- [Cloud](Cloud.md)
+- [CloudAdoption](CloudAdoption.md)
+- [Security](Security.md)
