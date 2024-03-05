@@ -1,3 +1,34 @@
+# RBAC
+
+do with Azure RBAC:
+- Allow an application to access all resources in a resource group.
+- Allow one user to manage VMs in a subscription, and allow another user to manage virtual networks.
+- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
+- Allow a user to manage all resources in a resource group, such as VMs, websites, and subnets.
+
+Object model
+- Security principal	An object that represents something that requests access to resources.
+- Role definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
+- Scope	The boundary for the requested level of access, or "how much" access is granted.
+- Assignment	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
+
+## Role definition
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
+
+- Actions permissions identify what actions are allowed.
+- NotActions permissions specify what actions aren't allowed.
+- DataActions permissions indicate how data can be changed or used.
+- AssignableScopes permissions list the scopes where a role definition can be assigned.
+
+## Role Assignment
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-assignment-040eb1ab.png)
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-based-authentication-b3dda7ae.png)
+- Microsoft Entra admin roles are used to manage resources in Microsoft Entra ID, such as users, groups, and domains. These roles are defined for the Microsoft Entra tenant at the root level of the configuration.
+- Azure RBAC roles provide more granular access management for Azure resources. These roles are defined for a requestor or resource and can be applied at multiple levels: the root, management groups, subscriptions, resource groups, or resources.
+
+
 # Azure Policy
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/management-groups-aa92c04a.png)
