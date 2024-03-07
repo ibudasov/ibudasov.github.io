@@ -7,3 +7,6 @@ install:
 pdf: 
 	pandoc cv.md -s -o Igor_Budasov_CV.pdf
 
+gitconfig:
+	git config user.name "Igor Budasov"
+	git config user.email "igor.budasov@gmail.com"
