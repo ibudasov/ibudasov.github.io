@@ -1,97 +1,104 @@
-https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
+# Network
+
+A union of correlated hosts
+- Has a network address space
+- Each host has an address within that space
+- https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
 
-NETWORK DEVICES
+## Network devices
 
-HOST - basically any device in the network, which can serve requests. Basically, it’s a server. Each host must have
-- IP address
-- subnet mask
-- default gateway, if talking to their subnets
-- DNS server if you want to connect to the internet
+### Host 
+Any device in the network that can serve requests. Essentially, it’s a server. Each host must have:
+- An IP address
+- A subnet mask
+- A default gateway, if talking to other subnets
+- A DNS server if you want to connect to the internet
 
-NETWORK - a union of correlated hosts
-- got a network address space
-- each host got an address within that space
+### Repeater
 
-EPEATER - amplifier of the signal, which dies out in the cable of the network
+An amplifier of the signal, which dies out in the cable of the network
 
-HUB -  multi-port repeater,, s it translates the signal from one machine to the rest 
+### Hub
 
+A multi-port repeater, as it translates the signal from one machine to the rest 
 
-bridge - communication between networks, crss-huub 
+### Bridge
 
-switch - within a network. Switching - process of moving data within a network. 
-- switch use and maintain MAC address tables (switch port to MAC address)
-- does
-    - learn — update the table
-    - flood— send new frame to all the hosts 
-    - forward - use mac address table t send frame 
-- can be configured as a hst, with an IP address, if yu want t send traffic to the switch. Might be used fr cnfiguring switch 
-- unicast - 1-1 cmmunication, one MAC t another
-- broadcast - a type of frame with  MAC=ffffff. Hwever, flood - is an actin f the switch, based n the broadcast type of frame
+Facilitates communication between networks, cross-hub 
 
-VLAN
-- Virtual llcal area netwrk
-- devides switch ports int virtual smaller  swithes
-- each smaller switch gt MAC address table
--  
+### Switch
 
-RUTER - communication between networks, also creates a hierarchy in networks. Creates internet. Routing - moving data between networks. 
-- have an IP and a MAC
-- n0de - anything with IP
-- router - a node that forwards ipv6 packets not explicitly addressed to itself 
-- host - node, buut nt a ruter
-- ARP tables are there on each ruuter
-- routing table for correlating networks 
-    - directly connected  - routes fr the networks which are attached
-        - drop a packet if doesn’t know the destination IP, n0 ARP
-    - static routing - manually configured
-    - dynamic rutes - rouuters learn autmatically from other routers, exchanging ruutes 
-- internet is a bunch of routers
-- routers can make hierarchies
-    - t have consistent connectivity
-    - easier to scale  
-    - rute suummarizatin - 
-        - /8,, /16, /24 - amunt f fist ctets t lok at whhile matching a rute
-            - /8 wuld be fr routers, ,because it is next hop
-            - the mask is needed t determine if the hst talks t the host inside r utside f suubnet
-        - 255.255.255.0 - means that first 3 octets are no bigger than 255 in decimal interpretation
-            - als means that the IP addresses in the subnet are not unique in first 3 ctets 
-        - 0.0.0.0/0 — ultimate route summary
-            - fr everything else g there
+Operates within a network. Switching - process of moving data within a network. 
+- Switch uses and maintains MAC address tables (switch port to MAC address)
+- Performs the following operations:
+    - Learn — update the table
+    - Flood — send a new frame to all the hosts 
+    - Forward - use MAC address table to send frame 
+- Can be configured as a host, with an IP address, if you want to send traffic to the switch. Might be used for configuring switch 
+- Unicast - 1-1 communication, one MAC to another
+- Broadcast - a type of frame with MAC=ffffff. However, flood - is an action of the switch, based on the broadcast type of frame
 
-PRTOCLS
-- ARP -- address resolutin prtocol
+### VLAN
+- Virtual local area network
+- Divides switch ports into virtual smaller switches
+- Each smaller switch got MAC address table
+
+### Router
+Communication between networks, also creates a hierarchy in networks. Creates internet. Routing - moving data between networks. 
+- Have an IP and a MAC
+- Node - anything with IP
+- Router - a node that forwards ipv6 packets not explicitly addressed to itself 
+- Host - node, but not a router
+- ARP tables are there on each router
+- Routing table for correlating networks 
+    - Directly connected  - routes for the networks which are attached
+        - Drop a packet if doesn’t know the destination IP, no ARP
+    - Static routing - manually configured
+    - Dynamic routes - routers learn automatically from other routers, exchanging routes 
+- Internet is a bunch of routers
+- Routers can make hierarchies
+    - To have consistent connectivity
+    - Easier to scale  
+    - Route summarization
+        - /8, /16, /24 - amount of first octets to look at while matching a route
+        - /8 would be for routers, because it is the next hop
+        - The mask is needed to determine if the host talks to the host inside or outside of the subnet
+    - 255.255.255.0 - means that the first 3 octets are no bigger than 255 in decimal interpretation
+        - Also means that the IP addresses in the subnet are not unique in the first 3 octets 
+    - 0.0.0.0/0 — ultimate route summary
+        - For everything else, go there
+
+## Protocols
+- ARP -- address resolution protocol
 - FTP
 - HTTP
 - TLS
 - HTTPS
 - SSL
 - DNS
-- DHCP - provides back IP address, subnet mask, defauult gateway  and DNS 
+- DHCP - provides back IP address, subnet mask, default gateway, and DNS 
 
+## OSI model
 
-OSI MODEL
+1. Physical - transports bits
+2. Data Link - hop-to-hop
+    1. Network card (NIC)
+    2. Addressed with MAC scheme
+    3. Switches - switch wires to physically connect NIC 
+3. Network - end-to-end
+    1. Addressing with IP
+4. Transport - service-to-service
+    1. Data streams for different services
+    2. Addressing with ports
+    3. TCP for reliability
+    4. UDP for efficiency 
+    5. Based on the new source connection port, we know that this is a new session, a new client
+5. Session
+6. Presentation
+7. Application
 
-1. physiclal - transporting bits
-2. data link - H0P-t-H0P
-    1. netwrk cardNIC
-    2.  addressed with  scheme MAC, 
-    3. switches - switch wires to physically connect NIC 
-3. netwrk - end-to-end
-    1. addressing with IP
-4. transprt service-t-service
-    1. data streams fr different services
-    2. addressing with ports
-    3. TCP fr reliability
-    4. UDP fr efficiaency 
-    5. based on the new surce connectin port we wnw that this is a new session, , a new client
-5. session
-6. presentation
-7. application
-
--------------------------------------------------------
-BROADCAST DOMAINS
+# Broadcast domain
 
 A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer. In other words, in a broadcast domain, when one device sends a broadcast message, all other devices in the same domain receive and process that message. Broadcast messages are typically used for tasks such as address resolution (like ARP in IPv4) or service discovery.
 
@@ -107,8 +114,8 @@ A broadcast domain is a logical division of a computer network, in which all nod
 4. Routers:
     * Routers operate at the network layer and separate broadcast domains by default. When a router receives a broadcast packet on one interface, it does not forward that broadcast to other interfaces.
     * Each interface on a router can be considered a separate broadcast domain. For example, if you have a router with three interfaces, each interface is in its own broadcast domain.
--------------------------------------------------------
-SUBNETTING
+
+## Subnetting
 
 1. Understanding IP Addresses:
     * IP addresses consist of two parts: the network portion and the host portion. For example, in the IP address 192.168.1.1, "192.168.1" is the network portion, and ".1" is the host portion.
@@ -123,25 +130,27 @@ SUBNETTING
     * For example, if you need 30 hosts per subnet, you would need a subnet size that accommodates at least 32 hosts (2^5 = 32). So, a subnet mask of 255.255.255.224 (or /27 in CIDR notation) would be appropriate because it provides 32 host addresses per subnet.
 6. Allocate Subnets:
     * Allocate the calculated subnets within the original network space. Each subnet will have its own network address, and the host addresses within each subnet will be used to assign individual devices.
--------------------------------------------------------
-DNS (Domain Name System)
+
+
+## DNS
 
 * DNS is a distributed system that translates human-readable domain names (like www.example.com) into IP addresses (like 192.168.1.1) that computers use to identify each other on a network.
 * DNS operates on the application layer of the Internet Protocol (IP) suite.
--------------------------------------------------------
-TCP (Transmission Control Protocol) and UDP (User Datagram Protocol):
+
+## TCP (Transmission Control Protocol) and UDP (User Datagram Protocol):
 * TCP and UDP are both transport layer protocols that facilitate communication between applications over a network.
 * TCP is a connection-oriented protocol that provides reliable and ordered delivery of data. It establishes a connection, ensures data integrity, and guarantees that data is delivered in the correct order.
 * UDP, on the other hand, is a connectionless protocol that does not guarantee reliable delivery or ordered data transmission. It is often used for real-time applications where a small amount of data loss is acceptable, such as in streaming or gaming.
--------------------------------------------------------
+
+
 Relationship between DNS and TCP/UDP:
 * DNS primarily uses UDP for its communication, specifically for DNS query messages. UDP is chosen because DNS queries are typically short-lived, and the overhead of establishing a TCP connection for each query is unnecessary.
 * However, there are situations where DNS uses TCP. For example:
     * Large Responses: If the DNS response data is too large to fit in a single UDP packet, DNS may switch to TCP. This is common when dealing with DNS responses for DNSSEC (DNS Security Extensions) or other resource records with large amounts of data.
     * Zone Transfers: When a DNS server needs to transfer a large amount of zone data to another DNS server, it uses TCP.
     * Reliability: In some cases, when a reliable and ordered delivery of DNS data is required, TCP may be used.
--------------------------------------------------------
-SSL
+
+## SSL
 
 Secure Sockets Layer (SSL) is a cryptographic protocol that provides secure communication over a computer network, most commonly used for securing web browsing but also applicable to other applications.
 
@@ -153,8 +162,8 @@ Goals
 1. Data Encryption: SSL uses cryptographic algorithms to encrypt data exchanged between the client and server. This ensures that even if the communication is intercepted, the intercepted data is unintelligible without the appropriate decryption key.
 2. Data Integrity: SSL provides mechanisms for verifying the integrity of the data exchanged between the client and server. This prevents tampering with the data during transit.
 3. Authentication: SSL facilitates the authentication of the server to the client and, optionally, the client to the server. This is typically done through the use of digital certificates, which are issued by trusted Certificate Authorities (CAs).
--------------------------------------------------------
-SSL HANDSHAKE
+ 
+ ### SSL handshake
 
 1. ClientHello:
     * The process begins when a client (e.g., a web browser) sends a "ClientHello" message to the server.
@@ -175,8 +184,7 @@ SSL HANDSHAKE
     * Both the client and server send a "Finished" message, indicating that the handshake is complete.
     * From this point on, the client and server can communicate securely using the established encryption keys.
 
--------------------------------------------------------
-TLS 
+## TLS 
 
 1. Handshake Protocol:
     * Like SSL, TLS begins with a handshake protocol where the client and server negotiate and establish a secure connection.
@@ -196,8 +204,9 @@ TLS
 7. TLS Versions:
     * TLS has seen multiple versions, with each version addressing security vulnerabilities and introducing improvements. Common TLS versions include TLS 1.0, TLS 1.1, TLS 1.2, and TLS 1.3.
     * TLS 1.3, the latest version as of my knowledge cutoff in January 2022, brings significant security enhancements and performance improvements.
--------------------------------------------------------
-FIREWALLS
+
+
+## Firewall
 
 1. Packet Filtering:
     * Firewalls inspect individual packets of data as they travel through the network.
@@ -224,8 +233,8 @@ FIREWALLS
 8. Hardware and Software Firewalls:
     * Firewalls can be implemented as both hardware devices and software applications.
     * Hardware firewalls are standalone devices that are often deployed at the network perimeter, while software firewalls can be installed on individual computers or servers.
--------------------------------------------------------
-SYSTEM AUTOMATION
+
+## System automation
 
 1. Shell scripts -- automating daily tasks
 2. Cron Jobs -- runs jobs at specific intervals
