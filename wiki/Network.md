@@ -5,6 +5,25 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## Connestivity directions
+- Dept to Dept (East-West)
+- Public to Internal (North-South)
+- Peering (Cloud to OnPrem)
+
+## Hub and spoke topology
+
+ is a system where a central node (the hub) is connected to peripheral nodes (the spokes). All data that is transmitted between the peripheral nodes must pass through the central hub. This topology is commonly used in systems where control and coordination of the nodes is important.
+
+```
+    Spoke1
+      |
+      |
+Hub --+-- Spoke2
+      |
+      |
+    Spoke3
+```
+
 
 ## Network devices
 
