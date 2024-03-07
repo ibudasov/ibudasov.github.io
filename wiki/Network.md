@@ -163,7 +163,7 @@ Goals
 2. Data Integrity: SSL provides mechanisms for verifying the integrity of the data exchanged between the client and server. This prevents tampering with the data during transit.
 3. Authentication: SSL facilitates the authentication of the server to the client and, optionally, the client to the server. This is typically done through the use of digital certificates, which are issued by trusted Certificate Authorities (CAs).
  
- ### SSL handshake
+### SSL handshake
 
 1. ClientHello:
     * The process begins when a client (e.g., a web browser) sends a "ClientHello" message to the server.
