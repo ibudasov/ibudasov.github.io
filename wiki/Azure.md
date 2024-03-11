@@ -1,3 +1,71 @@
+# VPN Gateway
+
+Azure VPN Gateway is a service that can be used to send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet. 
+
+Types:
+- Site-to-site connection: A cross-premises IPsec/IKE VPN tunnel connection between the VPN gateway and an on-premises VPN device.
+- Point-to-site connection: VPN over OpenVPN, IKEv2, or SSTP. This type of connection lets you connect to your virtual network from a remote location, such as from a conference or from home.
+- VNet-to-VNet: An IPsec/IKE VPN tunnel connection between the VPN gateway and another Azure VPN gateway that uses a VNet-to-VNet connection type. This connection type is designed specifically for VNet-to-VNet connections.
+- Site-to-site connection: An IPsec/IKE VPN tunnel connection between the VPN gateway and another Azure VPN gateway. This type of connection, when used in the VNet-to-VNet architecture, uses the Site-to-site (IPsec) connection type, which allows cross-premises connections to the gateway in addition connections between VPN gateways.
+
+Azure VPN Gateway is not always the best solution for connecting an on-premises environment to the cloud. Azure ExpressRoute is a dedicated, high-speed private connection between an on-premises network and Microsoft cloud services
+
+- https://learn.microsoft.com/en-us/training/modules/intro-to-azure-vpn-gateway/
+- https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways
+
+
+# Azure WAN
+
+Azure Virtual WAN is a networking service that brings many networking, security, and routing functionalities together to provide a single operational interface. Some of the main features include:
+
+- Branch connectivity (via connectivity automation from Virtual WAN Partner devices such as SD-WAN or VPN CPE).
+- Site-to-site VPN connectivity.
+- Remote user VPN connectivity (point-to-site).
+- Private connectivity (ExpressRoute).
+- Intra-cloud connectivity (transitive connectivity for virtual networks).
+- VPN ExpressRoute inter-connectivity.
+- Routing, Azure Firewall, and encryption for private connectivity.
+
+The Virtual WAN architecture is a hub and spoke architecture with scale and performance built in for branches (VPN/SD-WAN devices)
+
+## Virtual WAN resources
+To configure an end-to-end virtual WAN, you create the following resources:
+
+https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about
+https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-locations-partners
+
+- Virtual WAN: The virtualWAN resource represents a virtual overlay of your Azure network and is a collection of multiple resources. It contains links to all your virtual hubs that you would like to have within the virtual WAN. Virtual WANs are isolated from each other and can't contain a common hub. Virtual hubs in different virtual WANs don't communicate with each other.
+- Hub: A virtual hub is a Microsoft-managed virtual network. The hub contains various service endpoints to enable connectivity. From your on-premises network (vpnsite), you can connect to a VPN gateway inside the virtual hub, connect ExpressRoute circuits to a virtual hub, or even connect mobile users to a point-to-site gateway in the virtual hub. The hub is the core of your network in a region. Multiple virtual hubs can be created in the same region.
+- A hub gateway isn't the same as a virtual network gateway that you use for ExpressRoute and VPN Gateway. For example, when using Virtual WAN, you don't create a site-to-site connection from your on-premises site directly to your VNet. Instead, you create a site-to-site connection to the hub. The traffic always goes through the hub gateway. This means that your VNets don't need their own virtual network gateway. Virtual WAN lets your VNets take advantage of scaling easily through the virtual hub and the virtual hub gateway.
+- Hub virtual network connection: The hub virtual network connection resource is used to connect the hub seamlessly to your virtual network. One virtual network can be connected to only one virtual hub.
+- Hub-to-hub connection: Hubs are all connected to each other in a virtual WAN. This implies that a branch, user, or VNet connected to a local hub can communicate with another branch or VNet using the full mesh architecture of the connected hubs. You can also connect VNets within a hub transiting through the virtual hub, as well as VNets across hub, using the hub-to-hub connected framework.
+- Hub route table: You can create a virtual hub route and apply the route to the virtual hub route table. You can apply multiple routes to the virtual hub route table.
+
+Additional Virtual WAN resources
+
+Site: This resource is used for site-to-site connections only. The site resource is vpnsite. It represents your on-premises VPN device and its settings. By working with a Virtual WAN partner, you have a built-in solution to automatically export this information to Azure.
+
+# VWAN + VPM Gateway
+
+https://learn.microsoft.com/en-us/azure/virtual-wan/connect-virtual-network-gateway-vwan
+
+elationship between Azure VPN Gateway and Azure Virtual WAN.
+
+1. Azure VPN Gateway:
+- The Azure VPN Gateway is a service that allows you to connect your on-premises networks to Azure securely. It enables Site-to-Site (S2S) VPNs in a similar way to how you would set up and connect to a remote branch office.
+- It uses industry-standard protocols such as IPsec (Internet Protocol Security) and IKE (Internet Key Exchange) to establish secure connections between your on-premises network and Azure resources.
+- Organizations often deploy S2S VPNs to connect branch offices to the same Azure Virtual Network (VNet) while the main corporate WAN (Wide Area Network) is accessed via ExpressRoute. In case of connectivity issues with ExpressRoute, the corporate WAN may also use S2S VPN as a backup path1.
+2. Azure Virtual WAN:
+- Azure Virtual WAN is a networking service that simplifies and optimizes connectivity for branch offices, remote users, and Azure resources.
+- It allows you to create a virtual hub that acts as a central point for connecting various network resources.
+- Key features of Azure Virtual WAN include:
+  - Transit connectivity: Full transit between branches, sites, mobile users, and services using Azure’s global infrastructure.
+  - Integration with SD-WAN: You can run SD-WAN virtual appliances natively in Azure Virtual WAN2.
+  - User VPN (point-to-site) support: Provides secure connectivity for remote users to Azure resources3.
+
+Remember that the terminology distinguishes between VPN Gateway virtual network gateway and Virtual WAN VPN gateway to minimize confusion between the two features4. These services work together to provide secure and efficient connectivity within your Azure environment.
+
+
 # RBAC
 
 do with Azure RBAC:
