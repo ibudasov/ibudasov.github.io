@@ -1,3 +1,22 @@
+# AzAPI
+
+The AzAPI provider is a thin layer on top of the Azure ARM REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version. This provider complements the AzureRM provider by enabling the management of new Azure resources and properties (including private preview).
+
+## Benefits
+- Supports all Azure services:
+  - Private preview services and features
+  - Public preview services and features
+  - All API versions
+- Full Terraform state file fidelity
+  - Properties and values are saved to state
+- No dependency on Swagger
+- Common and consistent Azure authentication
+
+Use the extension
+https://marketplace.visualstudio.com/items?itemName=azapi-vscode.azapi
+
+More: https://learn.microsoft.com/en-us/azure/developer/terraform/overview-azapi-provider
+
 # VPN Gateway
 
 Azure VPN Gateway is a service that can be used to send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet. 
