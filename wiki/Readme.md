@@ -14,6 +14,7 @@
 - [Helm](Helm.md)
 - [GitOps](GitOps.md)
 - [Spacelift](Spacelift.md)
+- [Bicep](Bicep.md)
 
 ## Soft Skills
 
