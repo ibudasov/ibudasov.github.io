@@ -5,6 +5,21 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## BGP
+
+Border Gateway Protocol, is a protocol used to exchange routing information across autonomous systems on the internet. In the context of cloud engineering, BGP is often used in conjunction with VPNs or Direct Connect (in AWS) / ExpressRoute (in Azure) / Cloud Interconnect (in Google Cloud) for routing traffic between your on-premises network and your VPCs in the cloud.
+
+BGP can be used to advertise the routes of your on-premises network to the cloud, and vice versa.
+
+- Autonomous Systems (AS): An Autonomous System is a network or group of networks under the control of a single entity, such as an ISP or a large enterprise. Each AS is assigned a unique number, known as an Autonomous System Number (ASN).
+- BGP Peering: BGP routers form a TCP connection with each other, known as a peering session, to exchange BGP messages. Peering can be internal (iBGP) within the same AS, or external (eBGP) between different ASes.
+- BGP Routes and NLRI: BGP uses Network Layer Reachability Information (NLRI) to identify a route. NLRI includes the IP prefix (network address and subnet mask) and other attributes.
+- BGP Attributes: BGP uses attributes in its routing decisions. Some of the most important attributes are AS-PATH (the path a route has taken through different ASes), NEXT-HOP (the next hop IP address to reach the destination), and MED (Metric used for path selection).
+- BGP Route Selection: BGP uses a complex decision process to select the best path. It considers multiple factors, including the length of the AS-PATH, the origin of the route, and the values of various BGP attributes.
+- BGP Advertisement: Once BGP selects a best path, it advertises that path to its peers. This advertisement includes the NLRI and the associated BGP attributes.
+- BGP Convergence: BGP convergence is the process of all BGP routers in the network agreeing on the best paths. This can take some time, especially in large networks.
+- BGP Stability Features: BGP includes features to maintain stability in the face of network changes. These include route dampening (which suppresses unstable routes) and BGP Graceful Restart (which allows BGP to recover from failures without disrupting network traffic).
+
 ## Connestivity directions
 - Dept to Dept (East-West)
 - Public to Internal (North-South)
