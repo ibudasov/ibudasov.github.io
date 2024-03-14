@@ -33,7 +33,7 @@ Azure VPN Gateway is not always the best solution for connecting an on-premises 
 - https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways
 
 
-# Azure WAN
+# Azure vWAN
 
 Azure Virtual WAN is a networking service that brings many networking, security, and routing functionalities together to provide a single operational interface. Some of the main features include:
 
@@ -48,21 +48,34 @@ Azure Virtual WAN is a networking service that brings many networking, security,
 The Virtual WAN architecture is a hub and spoke architecture with scale and performance built in for branches (VPN/SD-WAN devices)
 
 ## Virtual WAN resources
-To configure an end-to-end virtual WAN, you create the following resources:
 
-https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about
-https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-locations-partners
+![](https://learn.microsoft.com/en-us/azure/virtual-wan/media/virtual-wan-about/virtualwanp2s.png)
 
-- Virtual WAN: The virtualWAN resource represents a virtual overlay of your Azure network and is a collection of multiple resources. It contains links to all your virtual hubs that you would like to have within the virtual WAN. Virtual WANs are isolated from each other and can't contain a common hub. Virtual hubs in different virtual WANs don't communicate with each other.
-- Hub: A virtual hub is a Microsoft-managed virtual network. The hub contains various service endpoints to enable connectivity. From your on-premises network (vpnsite), you can connect to a VPN gateway inside the virtual hub, connect ExpressRoute circuits to a virtual hub, or even connect mobile users to a point-to-site gateway in the virtual hub. The hub is the core of your network in a region. Multiple virtual hubs can be created in the same region.
-- A hub gateway isn't the same as a virtual network gateway that you use for ExpressRoute and VPN Gateway. For example, when using Virtual WAN, you don't create a site-to-site connection from your on-premises site directly to your VNet. Instead, you create a site-to-site connection to the hub. The traffic always goes through the hub gateway. This means that your VNets don't need their own virtual network gateway. Virtual WAN lets your VNets take advantage of scaling easily through the virtual hub and the virtual hub gateway.
-- Hub virtual network connection: The hub virtual network connection resource is used to connect the hub seamlessly to your virtual network. One virtual network can be connected to only one virtual hub.
-- Hub-to-hub connection: Hubs are all connected to each other in a virtual WAN. This implies that a branch, user, or VNet connected to a local hub can communicate with another branch or VNet using the full mesh architecture of the connected hubs. You can also connect VNets within a hub transiting through the virtual hub, as well as VNets across hub, using the hub-to-hub connected framework.
-- Hub route table: You can create a virtual hub route and apply the route to the virtual hub route table. You can apply multiple routes to the virtual hub route table.
+- **Virtual WAN**: The virtualWAN resource represents a virtual overlay of your Azure network and is a collection of multiple resources. It contains links to all your virtual hubs that you would like to have within the virtual WAN. Virtual WANs are isolated from each other and can't contain a common hub. Virtual hubs in different virtual WANs don't communicate with each other.
+- **Hub**: A virtual hub is a Microsoft-managed virtual network. The hub contains various service endpoints to enable connectivity. From your on-premises network (vpnsite), you can connect to a VPN gateway inside the virtual hub, connect ExpressRoute circuits to a virtual hub, or even connect mobile users to a point-to-site gateway in the virtual hub. The hub is the core of your network in a region. Multiple virtual hubs can be created in the same region.
+> **hub gateway** isn't the same as a virtual network gateway that you use for ExpressRoute and VPN Gateway. For example, when using Virtual WAN, you don't create a site-to-site connection from your on-premises site directly to your VNet. Instead, you create a site-to-site connection to the hub. The traffic always goes through the hub gateway. This means that your VNets don't need their own virtual network gateway. Virtual WAN lets your VNets take advantage of scaling easily through the virtual hub and the virtual hub gateway.
+- **Hub virtual network connection**: The hub virtual network connection resource is used to connect the hub seamlessly to your virtual network. One virtual network can be connected to only one virtual hub.
+- **Hub-to-hub connection**: Hubs are all connected to each other in a virtual WAN. This implies that a branch, user, or VNet connected to a local hub can communicate with another branch or VNet using the full mesh architecture of the connected hubs. You can also connect VNets within a hub transiting through the virtual hub, as well as VNets across hub, using the hub-to-hub connected framework.
+- **Hub route table**: You can create a virtual hub route and apply the route to the virtual hub route table. You can apply multiple routes to the virtual hub route table.
+- **Site**: This resource is used for site-to-site connections only. The site resource is vpnsite. It represents your on-premises VPN device and its settings. By working with a Virtual WAN partner, you have a built-in solution to automatically export this information to Azure.
 
-Additional Virtual WAN resources
+## Routing preference
 
-Site: This resource is used for site-to-site connections only. The site resource is vpnsite. It represents your on-premises VPN device and its settings. By working with a Virtual WAN partner, you have a built-in solution to automatically export this information to Azure.
+![](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/media/routing-preference-overview/route-via-microsoft-global-network.png)
+
+Azure routing preference enables you to choose how your traffic routes between Azure and the Internet. You can choose to route traffic either via the Microsoft network, or, via the ISP network (public internet). These options are also referred to as cold potato routing and hot potato routing respectively.
+
+**Ingress traffic**: The global BGP Anycast announcement ensures ingress traffic enters Microsoft network closest to the user. When a user from Singapore accesses Azure resources hosted in Chicago, the traffic enters the Microsoft global network at the Singapore edge POP. The traffic then travels on the Microsoft network to the service hosted in Chicago.
+
+**Egress traffic**: The egress traffic follows the same principle. Traffic travels most of its journey on Microsoft global network and exits closest to the user. For example, if traffic from Azure in Chicago is destined to a user from Singapore, then traffic travels on the Microsoft network from Chicago to Singapore, and exits the Microsoft network at Singapore edge POP.
+
+Both ingress and egress traffic remain on the Microsoft global network whenever possible. This process is also known as **cold potato routing**.
+
+## Links
+- https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about
+- https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-locations-partners
+- https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-point-to-site-portal
+- https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview 
 
 # VWAN + VPM Gateway
 
