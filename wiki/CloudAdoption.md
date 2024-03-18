@@ -9,6 +9,19 @@ A cloud adoption framework is a set of guidelines and best practices that help o
 - Optimization: Guides organizations on continuously improving and maximizing the value derived from cloud technologies. This includes activities like modernizing applications, adopting new services, refining processes etc.
 - The cloud adoption framework helps align an organization's cloud strategy with its business goals and ensures a well-planned, governed transition to cloud environments. Major cloud providers like AWS, Microsoft Azure and Google Cloud offer their own customized cloud adoption frameworks to help customers leverage cloud computing.
 
+## Naming
+
+![](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png)
+https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming
+
+- easy to follow
+- concise
+- useful for recognizing information that's relevant to the deployed resource
+- examples https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FCloudAdoptionFramework%2Fmaster%2Fready%2Fnaming-and-tagging-conventions-tracking-template.xlsx&wdOrigin=BROWSELINK
+- azure naming: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
+
+![](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming-scope.png)
+
 ## Antipatterns
 
 1. **Lack of a clear strategy**: Jumping into cloud adoption without a clear strategy can lead to wasted resources and misaligned goals. It's important to have a clear understanding of why you're adopting the cloud and what you hope to achieve.
