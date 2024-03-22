@@ -14,4 +14,8 @@ resource "azapi_resource" "vpng-p2s" {
 }
 ```
 
-Which version is specified in the Azure Portal does not really matter
+Which version is specified in the Azure Portal does not really matter.
+
+> The only way to be right about the version -- is to specify it in the code. From there you can import the resource and manage it with Terrafrom or with Azure Portal. 
+
+If you are not sure which version to use -- try different versions with interval of a year, while `terraform import`
