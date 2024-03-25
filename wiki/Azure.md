@@ -1,3 +1,7 @@
+
+# Managed certificates
+See [Security.md](Security.md)
+
 # AzAPI
 
 The AzAPI provider is a thin layer on top of the Azure ARM REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version. This provider complements the AzureRM provider by enabling the management of new Azure resources and properties (including private preview).

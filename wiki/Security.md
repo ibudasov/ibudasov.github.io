@@ -1,6 +1,14 @@
 # Security
 - Security meant to be redundant (remember 2FA)
 
+## SSL/TSL certificates
+
+These are small data files that digitally bind a cryptographic key to an organization's details. When installed on a web server, it activates the padlock and the https protocol (over port 443) and allows secure connections from a web server to a browser.
+![](https://ssl-tls.co.nz/wp-content/uploads/2019/12/HowCertsWrok_Infographic_Desktop-2048x1106.png)
+
+
+![](https://blog.cloudflare.com/content/images/2016/03/ca-cert-signing.png)
+
 ## Zero trust security
 Zero Trust Security is a model that assumes no trust for any entity—regardless of whether it's inside or outside the network perimeter—trying to access network resources. Instead, every user, device, or system must be verified before access is granted.
 
