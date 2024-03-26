@@ -9,6 +9,15 @@ These are small data files that digitally bind a cryptographic key to an organiz
 
 ![](https://blog.cloudflare.com/content/images/2016/03/ca-cert-signing.png)
 
+### X.509
+
+X.509 is a standard defining the format of public key certificates. These certificates are used in many Internet protocols, including TLS and SSL, which are the basis for HTTPS, the secure protocol for browsing the web.
+
+In the context of X.509, an endpoint usually refers to a server or client that presents an X.509 certificate for authentication during a secure communication session. For example, when you connect to a secure website, the website's server is an endpoint that presents an X.509 certificate to your browser to prove its identity.
+
+In a broader context, an endpoint can also refer to a device or node that is an end point of a communication network, such as a computer, phone, or server. In the context of X.509, these devices might have their own certificates that they use to authenticate themselves to other devices or servers.
+
+
 ## Zero trust security
 Zero Trust Security is a model that assumes no trust for any entity—regardless of whether it's inside or outside the network perimeter—trying to access network resources. Instead, every user, device, or system must be verified before access is granted.
 
