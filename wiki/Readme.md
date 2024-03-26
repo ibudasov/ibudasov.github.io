@@ -15,6 +15,7 @@
 - [GitOps](GitOps.md)
 - [Spacelift](Spacelift.md)
 - [Bicep](Bicep.md)
+- [Telegraf](Telegraf.md)
 
 ## Soft Skills
 
