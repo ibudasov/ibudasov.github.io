@@ -16,6 +16,7 @@
 - [Spacelift](Spacelift.md)
 - [Bicep](Bicep.md)
 - [Telegraf](Telegraf.md)
+- [Grafana](Grafana.md)
 
 ## Soft Skills
 
