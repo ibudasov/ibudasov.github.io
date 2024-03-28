@@ -17,6 +17,7 @@
 - [Bicep](Bicep.md)
 - [Telegraf](Telegraf.md)
 - [Grafana](Grafana.md)
+- [Influx](Influx.md)
 
 ## Soft Skills
 
