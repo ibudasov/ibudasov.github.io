@@ -1,5 +1,23 @@
 # Influx
 
+## InfluxDB is an open-source time series database (TSDB) 
+
+### Purpose and Use Cases:
+Storage and Retrieval: InfluxDB is designed for the storage and retrieval of time series data.
+
+Fields of Application: 
+- Operations Monitoring: Tracking system performance, resource utilization, and other operational metrics.
+- Application Metrics: Collecting and analyzing metrics related to software applications.
+- Internet of Things (IoT): Storing data from IoT devices and sensors.
+- Real-Time Analytics: Processing and querying data in real time.
+
+### Features:
+- Time Series Data Model: InfluxDB organizes data into time series, making it efficient for handling timestamped data.
+- High Performance: It is optimized for high write and query performance.
+- Retention Policies: Allows you to define how long data should be retained.
+- SQL-Like Query Language: Supports a SQL-like query language for data retrieval.
+- Support for Graphite: InfluxDB can process data from Graphite, a popular monitoring tool.
+
 ## Object model
 Tags:
 - Tags are indexed string values meant for discrete sets of values.
