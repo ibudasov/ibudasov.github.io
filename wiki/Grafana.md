@@ -11,6 +11,8 @@ aka Telegraf, InfluxDB, Grafana
 
 ## Alerts
 - queries from the panes might be used as an example for alert queries
+- **contact points** are basically alert transports
+  - **notification policies** route alerts to contact point
 
 ## Limks
 - https://www.youtube.com/watch?v=QGG_76OmRnA
