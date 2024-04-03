@@ -101,20 +101,19 @@ elationship between Azure VPN Gateway and Azure Virtual WAN.
 
 Remember that the terminology distinguishes between VPN Gateway virtual network gateway and Virtual WAN VPN gateway to minimize confusion between the two features4. These services work together to provide secure and efficient connectivity within your Azure environment.
 
+# OIDC
+
+OpenID Connect (OIDC) is a simple identity layer on top of the OAuth 2.0 protocol, which allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner.
+
+In the context of Azure, OIDC is used in Azure Active Directory (Azure AD) to enable applications to authenticate users, and to protect web APIs. It allows clients to verify the identity of the user and to obtain their profile information. Azure AD uses OIDC to authenticate applications in a more secure way than basic authentication.
 
 # RBAC
 
-do with Azure RBAC:
-- Allow an application to access all resources in a resource group.
-- Allow one user to manage VMs in a subscription, and allow another user to manage virtual networks.
-- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
-- Allow a user to manage all resources in a resource group, such as VMs, websites, and subnets.
-
 Object model
-- Security principal	An object that represents something that requests access to resources.
-- Role definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
-- Scope	The boundary for the requested level of access, or "how much" access is granted.
-- Assignment	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
+- **Security principal**	An object that represents something that requests access to resources.
+- **Role** definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
+- **Scope**	The boundary for the requested level of access, or "how much" access is granted.
+- **Assignment**	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
 
 ## Role definition
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
