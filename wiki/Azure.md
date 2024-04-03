@@ -109,6 +109,8 @@ In the context of Azure, OIDC is used in Azure Active Directory (Azure AD) to en
 
 # RBAC
 
+https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
+
 Object model
 - **Security principal**	An object that represents something that requests access to resources.
 - **Role** definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
