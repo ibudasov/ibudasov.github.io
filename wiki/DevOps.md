@@ -4,6 +4,10 @@
 
 ## CONCURRENCY VS PARALLELISM
 
+## Check SSL certificate expiration date
+
+`nmap --script ssl-cert -p 443 avasecurity.com`
+
 ## Timestamp
 A Unix timestamp with milliseconds is often referred to as a Unix millisecond timestamp. It is the number of milliseconds that have elapsed since 1970-01-01 00:00:00 UTC, not counting leap seconds.
 
