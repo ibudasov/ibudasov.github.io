@@ -34,6 +34,7 @@ Being high in conscientiousness and dominance (DISC), gives me ability to work i
 - The Mentoring Club — mentee and mentor
 - Hack your future — teacher
 - `ibudasov/php7-iptc-manager` — open source library for PHP
+- https://github.com/influxdata/telegraf/pull/15099
 
 ## Languages	
 - **English** — fluent
