@@ -133,6 +133,12 @@ Object model
 - Microsoft Entra admin roles are used to manage resources in Microsoft Entra ID, such as users, groups, and domains. These roles are defined for the Microsoft Entra tenant at the root level of the configuration.
 - Azure RBAC roles provide more granular access management for Azure resources. These roles are defined for a requestor or resource and can be applied at multiple levels: the root, management groups, subscriptions, resource groups, or resources.
 
+## User Groups vs. Access Groups
+
+User Groups are used for managing users in Azure AD, while Access Groups (RBAC groups) are used for managing access to Azure resources.
+
+- **User Groups**: These are primarily used to manage users within Azure Active Directory (Azure AD). A user group is a collection of users, and when a user is added to a group, the user receives the permissions that are assigned to the group. This makes it easier to manage permissions for a collection of users, rather than having to manage permissions for each individual user.
+- **Access Groups**: These are used within Azure Resource Manager to manage access to Azure resources. An access group, also known as a role-based access control (RBAC) group, is a collection of users, groups, and applications that are granted access to Azure resources. The access is granted by assigning a role to the group, and the role defines the actions that the members of the group can perform on the resources.
 
 # Azure Policy
 
