@@ -36,3 +36,4 @@
 - [Network](Network.md)
 - [System Design](SystemDesign.md)
 - [Dev Ops](DevOps.md)
+- [Application Architecture](ApplicationArchitecture.md)
