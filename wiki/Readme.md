@@ -37,3 +37,4 @@
 - [System Design](SystemDesign.md)
 - [Dev Ops](DevOps.md)
 - [Application Architecture](ApplicationArchitecture.md)
+- [Event Driven Architecture](EDA.md)
