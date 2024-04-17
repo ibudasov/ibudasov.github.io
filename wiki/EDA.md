@@ -16,7 +16,7 @@
 
 | Criteria                           | Azure Service bus         | Azure Queue             | Azure Queue Storage                          | ZeroMQ         |
 |------------------------------------|---------------------------|-------------------------|----------------------------------------------|----------------|
-| Purpose                            | Microservices message bus | MQ, Part of Service Bus | Blob storage, less features, more durability | MQ             |
+| Purpose                            | Prod/con message broker | MQ, Part of Service Bus | Blob storage, less features, more durability | MQ             |
 | Guarantee of delivery              | Yes                       | Yes                     | Yes                                          | Yes            |
 | Order of messages                  | Yes                       | Yes                     | Yes                                          | Yes            |
 | Idempotency                        | Yes                       | Yes                     | Yes                                          | Yes            |
@@ -32,11 +32,19 @@
 | Batching                           | Yes                       | Yes                     | Yes                                          | Yes            |
 | Message versioning                 | With Protobuff            | With Protobuff          | With Protobuff                               | With Protobuff |
 
+### Related patterns
+
+- Competing Consumers pattern. Multiple consumers might need to compete to read messages from a queue. This pattern explains how to process multiple messages concurrently to optimize throughput, to improve scalability and availability, and to balance the workload.
+- Priority Queue pattern. For cases where the business logic requires that some messages are processed before others, this pattern describes how messages posted by a producer with a higher priority are received and processed more quickly by a consumer than messages of a lower priority.
+- Queue-based Load Leveling pattern. This pattern uses a message broker to act as a buffer between a producer and a consumer to help to minimize the impact on availability and responsiveness of intermittent heavy loads for both those entities.
+- Retry pattern. A producer or consumer might be unable connect to a queue, but the reasons for this failure might be temporary and quickly pass. This pattern describes how to handle this situation to add resiliency to an application.
+- Scheduler Agent Supervisor pattern. Messaging is often used as part of a workflow implementation. This pattern demonstrates how messaging can coordinate a set of actions across a distributed set of services and other remote resources, and enable a system to recover and retry actions that fail.
+- Choreography pattern. This pattern shows how services can use messaging to control the workflow of a business transaction.
+Claim-Check pattern. This pattern shows how to split a large message into a claim check and a payload.
+
 ### Links
 - https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven
 - https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices
 - https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/messaging 
 - https://learn.microsoft.com/en-us/azure/service-bus-messaging/compare-messaging-services
 - https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-federation-overview 
-- https://learn.microsoft.com/en-us/azure/architecture/patterns/competing-consumers
-- https://learn.microsoft.com/en-us/azure/architecture/patterns/queue-based-load-leveling
