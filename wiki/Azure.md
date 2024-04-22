@@ -1,12 +1,44 @@
+# Tools
 
-# Managed certificates
-See [Security.md](Security.md)
+## Quickstart
 
-# AzAPI
+```sh
+# https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+brew update && brew install azure-cli
+
+echo "autoload bashcompinit && bashcompinit" >> ~/.zshrc
+echo "source $(brew --prefix)/etc/bash_completion.d/az" >> ~/.zshrc
+
+
+# https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash
+az login
+az account list --query "[?user.name=='igor.budasov@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
+
+az account set --subscription "4167d2fe-8b0c-banaan-acbe-0b613ec53c33"
+
+# https://learn.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles
+az ad sp create-for-rbac --name terraform-principal --role Owner --scopes /subscriptions/___________
+
+export ARM_SUBSCRIPTION_ID="xxxxxxxx"
+export ARM_TENANT_ID="xxxxx"
+export ARM_CLIENT_ID="xxxxxx"
+export ARM_CLIENT_SECRET="xxxxxxx"
+```
+
+## Azure Shop
+- It contains thousands of offerings from Microsoft and third-party vendors across various categories like analytics, development tools, databases and more. This includes both software as a service (SaaS) applications and virtual machine-based applications.
+- Applications in the marketplace have been tested and certified by Microsoft to ensure they work as expected when deployed on Azure. This helps reduce integration risks.
+- Once you find an offering you're interested in, you can easily deploy it with just a few clicks directly from the marketplace portal. This simplifies the deployment process.
+- Marketplace offerings have different pricing models - some have free trials and pay-as-you-go options while others require upfront commitments. Make sure to check the pricing details for each offering.
+- You can manage your marketplace purchases through your Azure account, get support directly from the publisher, and receive updates and notifications about the offerings.
+- The marketplace integrates with other Azure services like Azure Active Directory for user management and Azure Resource Manager for deployment and management.
+- https://azuremarketplace.microsoft.com/nl-nl/home  
+
+## AzAPI
 
 The AzAPI provider is a thin layer on top of the Azure ARM REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version. This provider complements the AzureRM provider by enabling the management of new Azure resources and properties (including private preview).
 
-## Benefits
+### Benefits
 - Supports all Azure services:
   - Private preview services and features
   - Public preview services and features
@@ -21,7 +53,133 @@ https://marketplace.visualstudio.com/items?itemName=azapi-vscode.azapi
 
 More: https://learn.microsoft.com/en-us/azure/developer/terraform/overview-azapi-provider
 
-# VPN Gateway
+## PowerShell
+
+- can be connected to your Account/Subscription
+- got 
+  - `cmdlet`, which are modules
+    - modules can be installed and reused 
+- can do scripting (base for cmdlets)
+- can do pyping `$vm | Get-AzVMSize`
+- command outputs are objects `$vm = (Get-AzVM -Name "testvm-eus-01" -ResourceGroupName learn-bce21a4b-3352-4e88-8d15-680d3dc88c35)` 
+- Can be assigned to a variable, and then output as a whole or a part of it, a property `$vm.StorageProfile.OsDisk` 
+
+## Resource Manager
+
+> 💡 You can download resources as ARM JSON, edit it and redeploy
+
+> 💡 Use parameters for settings that vary according to the environment
+
+
+# Managed certificates
+See [Security.md](Security.md)
+
+# Authentication/Authorization
+
+## Entra ID
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
+
+- for internal SaaS applications
+- for the apps developed inside of the org
+- similar to Active Directory on-prem, but in the cloud
+
+Features
+- SSO
+- all the platforms
+- secure remote access by other apps
+- sensitive data protection
+- self-service
+
+Object Model
+- Identity — An identity is an object that can be authenticated. The identity can be a user with a username and password. Identities can also be applications or other servers that require authentication by using secret keys or certificates.
+- Account — An account is an identity that has data associated with it.
+- Microsoft Entra account — An Azure AD account is an identity that's created through Microsoft Entra ID or another Microsoft cloud service, such as Microsoft 365.
+- Azure tenant (directory) — An Azure tenant is a single dedicated and trusted instance of Microsoft Entra ID. Each tenant (also called a directory) represents a single organization. When your organization signs up for a Microsoft cloud service subscription, a new tenant is automatically created.
+- Subscription — An Azure subscription is used to pay for Azure cloud services. Each subscription is joined to a single tenant. You can have multiple subscriptions.
+
+AD vs Entra ID
+
+- Identity solution: AD DS is primarily a directory service, while Microsoft Entra ID is a full identity solution. 
+- Communication protocols: Because Microsoft Entra ID is based on HTTP and HTTPS, it doesn't use Kerberos authentication. Microsoft Entra ID implements HTTP and HTTPS protocols, such as SAML, WS-Federation, and OpenID Connect for authentication (and OAuth for authorization).
+- Federation services: Microsoft Entra ID includes federation services, and many third-party services like Facebook.
+- Flat structure: Microsoft Entra users and groups are created in a flat structure. 
+- Managed service: Microsoft Entra ID is a managed service. You manage only users, groups, and policies. 
+
+User Account types
+- Cloud ID — A user account with a cloud identity is defined only in Microsoft Entra ID. 
+- Directore synchronized ID — User accounts that have a directory-synchronized identity are defined in an on-premises Active Directory
+- Guest User — Guest user accounts are defined outside Azure. Examples include user accounts from other cloud providers, and Microsoft accounts like an Xbox LIVE account. 
+
+## OIDC
+
+OpenID Connect (OIDC) is a simple identity layer on top of the OAuth 2.0 protocol, which allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner.
+
+In the context of Azure, OIDC is used in Azure Active Directory (Azure AD) to enable applications to authenticate users, and to protect web APIs. It allows clients to verify the identity of the user and to obtain their profile information. Azure AD uses OIDC to authenticate applications in a more secure way than basic authentication.
+
+## RBAC
+
+https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
+
+> RBAC uses an allow model for access. By default everything is forbidden. Roles summarize: `read` + `write` might come from 2 different roles
+
+- Allow one user to manage VMs in a subscription and another user to manage virtual networks.
+- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
+- Allow a user to manage all resources in a resource group, such as VMs, websites, and virtual subnets.
+- Allow an application to access all resources in a resource group.
+
+### Object model
+- **Security principal**	An object that represents something that requests access to resources.
+- **Role** definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
+- **Scope**	The boundary for the requested level of access, or "how much" access is granted.
+- **Assignment**	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
+
+### Role definition
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
+
+- Actions permissions identify what actions are allowed.
+- NotActions permissions specify what actions aren't allowed.
+- DataActions permissions indicate how data can be changed or used.
+- AssignableScopes permissions list the scopes where a role definition can be assigned.
+
+### Role Assignment
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-assignment-040eb1ab.png)
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-based-authentication-b3dda7ae.png)
+- Microsoft Entra admin roles are used to manage resources in Microsoft Entra ID, such as users, groups, and domains. These roles are defined for the Microsoft Entra tenant at the root level of the configuration.
+- Azure RBAC roles provide more granular access management for Azure resources. These roles are defined for a requestor or resource and can be applied at multiple levels: the root, management groups, subscriptions, resource groups, or resources.
+
+### User Groups vs. Access Groups
+
+User Groups are used for managing users in Azure AD, while Access Groups (RBAC groups) are used for managing access to Azure resources.
+
+- **User Groups**: These are primarily used to manage users within Azure Active Directory (Azure AD). A user group is a collection of users, and when a user is added to a group, the user receives the permissions that are assigned to the group. This makes it easier to manage permissions for a collection of users, rather than having to manage permissions for each individual user.
+- **Access Groups**: These are used within Azure Resource Manager to manage access to Azure resources. An access group, also known as a role-based access control (RBAC) group, is a collection of users, groups, and applications that are granted access to Azure resources. The access is granted by assigning a role to the group, and the role defines the actions that the members of the group can perform on the resources.
+
+# Network
+
+1. **Azure Virtual Network (VNet)**: This is the fundamental building block for your private network in Azure. VNet enables many types of Azure resources, such as Azure Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks.
+
+2. **Azure Load Balancer**: This provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
+
+3. **Azure VPN Gateway**: This sends encrypted traffic across a public connection to an on-premises location, or it can send the traffic across a virtual private network (VPN) tunnel to another virtual network.
+
+4. **Azure Application Gateway**: This is a web traffic load balancer that enables you to manage traffic to your web applications. It's Azure's Application Delivery Controller as a service.
+
+5. **Azure Content Delivery Network (CDN)**: This is a distributed network of servers that can efficiently deliver web content to users. CDNs store cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency.
+
+6. **Azure DNS**: This provides hosting for your DNS domain, providing name resolution using Microsoft Azure infrastructure. By hosting your domains in Azure, you can manage your DNS records using the same credentials, APIs, tools, and billing as your other Azure services.
+
+7. **Azure Traffic Manager**: This is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.
+
+8. **Azure ExpressRoute**: This lets you extend your on-premises networks into the Microsoft cloud over a private connection facilitated by a connectivity provider.
+
+9. **Azure Network Watcher**: This is a collection of network monitoring and troubleshooting tools. It provides network diagnostic and visualization tools to help you understand, diagnose, and gain insights to your network in Azure.
+
+10. **Azure Firewall**: This is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
+
+## VPN Gateway
 
 Azure VPN Gateway is a service that can be used to send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet. 
 
@@ -36,8 +194,7 @@ Azure VPN Gateway is not always the best solution for connecting an on-premises 
 - https://learn.microsoft.com/en-us/training/modules/intro-to-azure-vpn-gateway/
 - https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways
 
-
-# Azure vWAN
+## Azure vWAN
 
 Azure Virtual WAN is a networking service that brings many networking, security, and routing functionalities together to provide a single operational interface. Some of the main features include:
 
@@ -51,7 +208,15 @@ Azure Virtual WAN is a networking service that brings many networking, security,
 
 The Virtual WAN architecture is a hub and spoke architecture with scale and performance built in for branches (VPN/SD-WAN devices)
 
-## Virtual WAN resources
+Azure Virtual WAN is a networking service that allows you to centrally manage and configure routing for your hybrid and multicloud networks. With Virtual WAN, you can connect multiple virtual networks together under a single routing construct called a Virtual WAN hub. This hub acts as a central point that connects all of your spokes (virtual networks) together.
+
+- **Hub-spoke topology** - Allows you to connect multiple virtual networks (spokes) back to a central routing point (hub). This simplifies connectivity and routing management.
+- **Built-in VPN gateway support** - Lets you connect your on-premises networks to the Virtual WAN hub using Azure VPN gateways.
+- **Centralized routing** - Routing policies are defined centrally at the hub so all spokes inherit the same routing behavior and connectivity. This replaces the need to configure routing individually at each spoke.
+- **Integration with Azure security services** - You can integrate the Virtual WAN hub with services like Azure Firewall to filter and inspect traffic centrally as it passes through the hub.
+- **Transitive routing** - Traffic can flow "through" the hub between any two spokes without having to egress and re-enter the hub. This simplifies connectivity between spokes.
+
+### Virtual WAN resources
 
 ![](https://learn.microsoft.com/en-us/azure/virtual-wan/media/virtual-wan-about/virtualwanp2s.png)
 
@@ -63,7 +228,7 @@ The Virtual WAN architecture is a hub and spoke architecture with scale and perf
 - **Hub route table**: You can create a virtual hub route and apply the route to the virtual hub route table. You can apply multiple routes to the virtual hub route table.
 - **Site**: This resource is used for site-to-site connections only. The site resource is vpnsite. It represents your on-premises VPN device and its settings. By working with a Virtual WAN partner, you have a built-in solution to automatically export this information to Azure.
 
-## Routing preference
+### Routing preference
 
 ![](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/media/routing-preference-overview/route-via-microsoft-global-network.png)
 
@@ -75,13 +240,13 @@ Azure routing preference enables you to choose how your traffic routes between A
 
 Both ingress and egress traffic remain on the Microsoft global network whenever possible. This process is also known as **cold potato routing**.
 
-## Links
+### Links
 - https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about
 - https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-locations-partners
 - https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-point-to-site-portal
 - https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview 
 
-# VWAN + VPM Gateway
+### VWAN + VPM Gateway
 
 https://learn.microsoft.com/en-us/azure/virtual-wan/connect-virtual-network-gateway-vwan
 
@@ -101,48 +266,13 @@ elationship between Azure VPN Gateway and Azure Virtual WAN.
 
 Remember that the terminology distinguishes between VPN Gateway virtual network gateway and Virtual WAN VPN gateway to minimize confusion between the two features4. These services work together to provide secure and efficient connectivity within your Azure environment.
 
-# OIDC
-
-OpenID Connect (OIDC) is a simple identity layer on top of the OAuth 2.0 protocol, which allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner.
-
-In the context of Azure, OIDC is used in Azure Active Directory (Azure AD) to enable applications to authenticate users, and to protect web APIs. It allows clients to verify the identity of the user and to obtain their profile information. Azure AD uses OIDC to authenticate applications in a more secure way than basic authentication.
-
-# RBAC
-
-https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
-
-Object model
-- **Security principal**	An object that represents something that requests access to resources.
-- **Role** definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
-- **Scope**	The boundary for the requested level of access, or "how much" access is granted.
-- **Assignment**	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
-
-## Role definition
-![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
-
-- Actions permissions identify what actions are allowed.
-- NotActions permissions specify what actions aren't allowed.
-- DataActions permissions indicate how data can be changed or used.
-- AssignableScopes permissions list the scopes where a role definition can be assigned.
-
-## Role Assignment
-
-![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-assignment-040eb1ab.png)
-
-![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-based-authentication-b3dda7ae.png)
-- Microsoft Entra admin roles are used to manage resources in Microsoft Entra ID, such as users, groups, and domains. These roles are defined for the Microsoft Entra tenant at the root level of the configuration.
-- Azure RBAC roles provide more granular access management for Azure resources. These roles are defined for a requestor or resource and can be applied at multiple levels: the root, management groups, subscriptions, resource groups, or resources.
-
-## User Groups vs. Access Groups
-
-User Groups are used for managing users in Azure AD, while Access Groups (RBAC groups) are used for managing access to Azure resources.
-
-- **User Groups**: These are primarily used to manage users within Azure Active Directory (Azure AD). A user group is a collection of users, and when a user is added to a group, the user receives the permissions that are assigned to the group. This makes it easier to manage permissions for a collection of users, rather than having to manage permissions for each individual user.
-- **Access Groups**: These are used within Azure Resource Manager to manage access to Azure resources. An access group, also known as a role-based access control (RBAC) group, is a collection of users, groups, and applications that are granted access to Azure resources. The access is granted by assigning a role to the group, and the role defines the actions that the members of the group can perform on the resources.
-
 # Azure Policy
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/management-groups-aa92c04a.png)
+
+- use a policy to restrict to which Azure regions you can deploy resources.
+- use a policy to restrict which types of virtual machine sizes can be deployed. 
+- use a policy to enforce naming conventions
 
 Considerations
 - custom hierarchies and groups. Align your Azure subscriptions by using custom hierarchies and grouping that meet your company's organizational structure and business scenarios. 
@@ -184,73 +314,8 @@ How to save money
 - Azure regions —	Compare pricing across regions. Pricing can vary from one region to another
 - Budgets	— Apply the budgeting features in Microsoft Cost Management to help plan and drive organizational accountability. With budgets, you can account for the Azure services you consume or subscribe to during a specific period. 
 
-# Entra ID
-
-![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
-
-- for internal SaaS applications
-- for the apps developed inside of the org
-- similar to Active Directory on-prem, but in the cloud
-
-Features
-- SSO
-- all the platforms
-- secure remote access by other apps
-- sensitive data protection
-- self-service
-
-Object Model
-- Identity — An identity is an object that can be authenticated. The identity can be a user with a username and password. Identities can also be applications or other servers that require authentication by using secret keys or certificates.
-- Account — An account is an identity that has data associated with it.
-- Microsoft Entra account — An Azure AD account is an identity that's created through Microsoft Entra ID or another Microsoft cloud service, such as Microsoft 365.
-- Azure tenant (directory) — An Azure tenant is a single dedicated and trusted instance of Microsoft Entra ID. Each tenant (also called a directory) represents a single organization. When your organization signs up for a Microsoft cloud service subscription, a new tenant is automatically created.
-- Subscription — An Azure subscription is used to pay for Azure cloud services. Each subscription is joined to a single tenant. You can have multiple subscriptions.
-
-AD vs Entra ID
-
-- Identity solution: AD DS is primarily a directory service, while Microsoft Entra ID is a full identity solution. 
-- Communication protocols: Because Microsoft Entra ID is based on HTTP and HTTPS, it doesn't use Kerberos authentication. Microsoft Entra ID implements HTTP and HTTPS protocols, such as SAML, WS-Federation, and OpenID Connect for authentication (and OAuth for authorization).
-- Federation services: Microsoft Entra ID includes federation services, and many third-party services like Facebook.
-- Flat structure: Microsoft Entra users and groups are created in a flat structure. 
-- Managed service: Microsoft Entra ID is a managed service. You manage only users, groups, and policies. 
-
-User Account types
-- Cloud ID — A user account with a cloud identity is defined only in Microsoft Entra ID. 
-- Directore synchronized ID — User accounts that have a directory-synchronized identity are defined in an on-premises Active Directory
-- Guest User — Guest user accounts are defined outside Azure. Examples include user accounts from other cloud providers, and Microsoft accounts like an Xbox LIVE account. 
-
-# RBAC
-
-> RBAC uses an allow model for access. By default everything is forbidden. Roles summarize: `read` + `write` might come from 2 different roles
-
-- Allow one user to manage VMs in a subscription and another user to manage virtual networks.
-- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
-- Allow a user to manage all resources in a resource group, such as VMs, websites, and virtual subnets.
-- Allow an application to access all resources in a resource group.
 
 
-# Policies
-
-- use a policy to restrict to which Azure regions you can deploy resources.
-- use a policy to restrict which types of virtual machine sizes can be deployed. 
-- use a policy to enforce naming conventions
-
-# PowerShell
-
-- can be connected to your Account/Subscription
-- got 
-  - `cmdlet`, which are modules
-    - modules can be installed and reused 
-- can do scripting (base for cmdlets)
-- can do pyping `$vm | Get-AzVMSize`
-- command outputs are objects `$vm = (Get-AzVM -Name "testvm-eus-01" -ResourceGroupName learn-bce21a4b-3352-4e88-8d15-680d3dc88c35)` 
-- Can be assigned to a variable, and then output as a whole or a part of it, a property `$vm.StorageProfile.OsDisk` 
-
-# Resource Manager
-
-> 💡 You can download resources as ARM JSON, edit it and redeploy
-
-> 💡 Use parameters for settings that vary according to the environment
 
 ## Resource Groups
  are at their simplest a logical collection of resources. There are a few rules for resource groups.
@@ -290,42 +355,20 @@ User Account types
   - Auto dependency management
   - Type validation
 
-# Azure VWAN
+# Messaging
 
-Azure Virtual WAN is a networking service that allows you to centrally manage and configure routing for your hybrid and multicloud networks. With Virtual WAN, you can connect multiple virtual networks together under a single routing construct called a Virtual WAN hub. This hub acts as a central point that connects all of your spokes (virtual networks) together.
+1. **Azure Service Bus**: It is a fully managed messaging broker that enables reliable cloud-to-cloud and on-premises messaging. Service Bus supports asynchronous messaging patterns such as publish/subscribe, request/reply, and message queuing. It provides advanced features like message ordering, duplicate detection, and session support.
 
-- **Hub-spoke topology** - Allows you to connect multiple virtual networks (spokes) back to a central routing point (hub). This simplifies connectivity and routing management.
-- **Built-in VPN gateway support** - Lets you connect your on-premises networks to the Virtual WAN hub using Azure VPN gateways.
-- **Centralized routing** - Routing policies are defined centrally at the hub so all spokes inherit the same routing behavior and connectivity. This replaces the need to configure routing individually at each spoke.
-- **Integration with Azure security services** - You can integrate the Virtual WAN hub with services like Azure Firewall to filter and inspect traffic centrally as it passes through the hub.
-- **Transitive routing** - Traffic can flow "through" the hub between any two spokes without having to egress and re-enter the hub. This simplifies connectivity between spokes.
+2. **Azure Event Hubs**: It is a big data streaming platform designed to handle high-throughput, event-driven workloads. Event Hubs can handle millions of events per second and seamlessly integrate with other Azure services like Azure Functions, Azure Stream Analytics, and Azure Logic Apps. It is commonly used for real-time analytics, ingestion of telemetry data, and log aggregation.
 
-# Quickstart
+3. **Azure Queue Storage**: It is a simple, asynchronous messaging service that allows decoupling and scaling of different components of an application. Queue Storage enables reliable and persistent message delivery with at-least-once delivery semantics. It is often used for creating task queues, handling asynchronous processing, and building distributed systems.
 
-```sh
-# https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
-brew update && brew install azure-cli
+4. **Azure Relay**: It provides secure, hybrid connectivity between on-premises applications and the cloud. Relay allows you to expose on-premises services to the internet or securely consume cloud services from on-premises systems. It uses a combination of messaging and connectivity features to facilitate communication across different networks and firewalls.
 
-echo "autoload bashcompinit && bashcompinit" >> ~/.zshrc
-echo "source $(brew --prefix)/etc/bash_completion.d/az" >> ~/.zshrc
+5. **Azure Notification Hubs**: It is a scalable push notification engine that enables sending push notifications to various platforms (iOS, Android, Windows, etc.) from a single backend API call. Notification Hubs abstracts the complexities of individual platform protocols, provides features like message tagging and segmentation, and offers rich telemetry for monitoring and analytics.
 
 
-# https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash
-az login
-az account list --query "[?user.name=='igor.budasov@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
-
-az account set --subscription "4167d2fe-8b0c-banaan-acbe-0b613ec53c33"
-
-# https://learn.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles
-az ad sp create-for-rbac --name terraform-principal --role Owner --scopes /subscriptions/___________
-
-export ARM_SUBSCRIPTION_ID="xxxxxxxx"
-export ARM_TENANT_ID="xxxxx"
-export ARM_CLIENT_ID="xxxxxx"
-export ARM_CLIENT_SECRET="xxxxxxx"
-```
-
-# Azure ServiceBus
+## Azure ServiceBus
 
 Azure Service Bus is a fully managed messaging and queuing service provided by Microsoft Azure. It allows applications and services to communicate over reliable messaging sessions. 
 
@@ -336,13 +379,13 @@ Azure Service Bus is a fully managed messaging and queuing service provided by M
 - **Integration**: It integrates well with other Azure services and on-premises systems. Events can be processed using services like Stream Analytics, Functions etc.
 - **Pricing**: It has a pay-as-you-go model based on the number of messages and storage used. No upfront costs or long-term commitments.
 
-## Features
+### Features
 
 - Distributed transactions do not work in the cloud. Because there is no perfect transaction coordinator, and you cannot have XA transactio. JMS transactions are the alternative
 - Works with generic AMQP 1.0 — one of them is RabbitMQ
 - 99.995%
 
-### Queues
+#### Queues
 - Exclusive lock for messages picked up by the consumers. This is not what Event Brokers like Kafka have. For Kafka the most important thing is the order. for ASB — exclusivity. This is why it is great for processing jobs. https://www.youtube.com/watch?v=LM7DByKOHBs 
 - Can buffer messages
 - Dead letter queue
@@ -353,14 +396,14 @@ Azure Service Bus is a fully managed messaging and queuing service provided by M
 - Session State — stores 1 message transactionally, keeps the state, which you can acquire later
 - Transactions. Ususlly paired with DB transactions (called inner transaction). Might give you idempotence on the app level
 
-### Topics
+#### Topics
 - are the same like queues on the Subscriber end
 - topics — are named multicast distribution points for messages
   - Filter/Action — is for modifying messages on the flight
 - Subscriptions — are durable queues bound to topics through a collection of selection rules
   - up to 2000 rules (is SQL statement of just sinple expression)
 
-## Architecture
+### Architecture
 
 - 3 tiers
   - gateway — exposed outside: AzPortal, API. Talks to AzActiveDirectory, and to Backend via AMQP
@@ -377,12 +420,12 @@ Azure Service Bus is a fully managed messaging and queuing service provided by M
     - all the features are happening here
   - storage
 
-# Azure Event Grid
+## Azure Event Grid
 
 Azure Event Grid,  is a service that routes events from any source to any destination. It's designed to build applications with event-based architectures.
 
 
-# Azure EventHub
+## Azure Event Hub
 
 Azure Event Hubs is a fully managed event ingestion service that can receive and process millions of events per second. It can be used to build real-time streaming pipelines and applications that require low-latency and high-throughput.
 
@@ -393,7 +436,7 @@ Azure Event Hubs is a fully managed event ingestion service that can receive and
 - **Reliability**: Events are replicated synchronously across data centers for reliability and availability even in case of regional outages.
 - **Pricing**: It has a pay-per-usage model based on throughput units and storage consumed. No upfront costs or long-term commitments.
 
-Features
+### Features
 
 - accumulates events if the subscribers do not process them fast enough
 - PULL delivery for retrieving new messages
@@ -401,52 +444,22 @@ Features
 - The events might use EventHubTrigger and use FunctionApp for processing
 - Event Hub is designed for high-throughput event streams, especially when your solution receives events faster than it can process them.
 
-# Azure Postgres
+# Databases
 
-- Azure Database for PostgreSQL is a fully managed PostgreSQL database service hosted in Microsoft Azure. It allows you to set up, manage, and connect to PostgreSQL databases in Azure without having to worry about managing infrastructure.
-- It provides automatic scaling of compute and storage resources so your database can handle varying loads with high performance. It can scale up to hundreds of gigabytes in size.
-- Some key features include point-in-time restore for backup and recovery, connection pooling, auditing, threat detection, and integration with other Azure services.
-- It offers built-in high availability with automatic failover to a secondary server in case of outages. The data is replicated synchronously across two to four servers for redundancy.
-- The pricing is on a pay-as-you-go model based on the compute and storage resources used. This allows you to pay only for what you consume.
 
-# Azure Cosmos
-
-- It is a multi-model database that supports popular data models like document, key-value, graph and columnar. This makes it very flexible for different application needs.
-- It offers global distribution and automatic replication of data across any number of Azure regions. This provides high availability and low latency access to data worldwide.
-- It scales massively to handle enormous throughput and storage requirements. Some customers have workloads with over 100 million requests per second and petabytes of storage.
-- The throughput is elastic and can be adjusted on the fly as your application's needs change, allowing you to pay only for what you use.
-- It offers multiple consistency models to balance between strong consistency and low latency as needed by your application.
-- Pricing is on a pay-per-use model based on throughput, storage and data egress.
-
-# Azure Functions
-- Functions are event-driven, meaning your code only runs when triggered by an event. This makes Functions very cost-effective since you only pay for the compute resources required to run your code.
-- Functions supports many programming languages including C#, JavaScript, Java, Python and more. This allows you to write functions using your preferred language.
-- Triggers define how a function is invoked. Common triggers include HTTP requests, timers, queues, etc. Bindings connect functions to other Azure services and resources like storage queues, tables, etc.
-- Functions has built-in auto-scaling, so it can handle varying loads efficiently without needing to manage infrastructure.
-
-# Azure Container Apps
-
-- k8s under the hood
-- Container Apps is for longer running containerized microservices, web apps, etc. Functions are better suited for short-lived, event-driven code snippets.
-- With Container Apps you manage the containers and infrastructure. Functions handles all the infrastructure management for you.
-- Container Apps gives you more control over containers and infrastructure but requires managing scaling and uptime. Functions automatically scales for you.
-
-# Azure Shop
-- It contains thousands of offerings from Microsoft and third-party vendors across various categories like analytics, development tools, databases and more. This includes both software as a service (SaaS) applications and virtual machine-based applications.
-- Applications in the marketplace have been tested and certified by Microsoft to ensure they work as expected when deployed on Azure. This helps reduce integration risks.
-- Once you find an offering you're interested in, you can easily deploy it with just a few clicks directly from the marketplace portal. This simplifies the deployment process.
-- Marketplace offerings have different pricing models - some have free trials and pay-as-you-go options while others require upfront commitments. Make sure to check the pricing details for each offering.
-- You can manage your marketplace purchases through your Azure account, get support directly from the publisher, and receive updates and notifications about the offerings.
-- The marketplace integrates with other Azure services like Azure Active Directory for user management and Azure Resource Manager for deployment and management.
-- https://azuremarketplace.microsoft.com/nl-nl/home  
-
-# Relational DB
+## Relational DB
 - **Azure SQL DB** — fully managed SQL Server
 - Azure Database for **MySQL**: A fully managed, scalable MySQL relational database with high availability and security built in at no extra cost.
 - Azure Database for **PostgreSQL**: A fully managed, scalable PostgreSQL relational database with high availability and security built in at no extra cost.
 - Azure Database for **MariaDB**: A fully managed, scalable MariaDB relational database with high availability and security built in at no extra cost.
 
-# NoSQL Databases
+## Postgres SQL backup
+
+- https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-backup-restore#backup-overview
+- The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
+- These backup files can't be exported or used to create servers outside Azure Database for PostgreSQL flexible server. 
+
+## NoSQL Databases
 
 - **Azure Cosmos DB**: A globally distributed, multi-model database service. It supports document, key-value, wide-column, and graph databases.
 
@@ -456,43 +469,24 @@ Features
 
 - Azure Cache for **Redis**: An in-memory data store that is used as a database, cache, and message broker.
 
-# Messaging services
+## Azure Postgres
 
-1. **Azure Service Bus**: It is a fully managed messaging broker that enables reliable cloud-to-cloud and on-premises messaging. Service Bus supports asynchronous messaging patterns such as publish/subscribe, request/reply, and message queuing. It provides advanced features like message ordering, duplicate detection, and session support.
+- Azure Database for PostgreSQL is a fully managed PostgreSQL database service hosted in Microsoft Azure. It allows you to set up, manage, and connect to PostgreSQL databases in Azure without having to worry about managing infrastructure.
+- It provides automatic scaling of compute and storage resources so your database can handle varying loads with high performance. It can scale up to hundreds of gigabytes in size.
+- Some key features include point-in-time restore for backup and recovery, connection pooling, auditing, threat detection, and integration with other Azure services.
+- It offers built-in high availability with automatic failover to a secondary server in case of outages. The data is replicated synchronously across two to four servers for redundancy.
+- The pricing is on a pay-as-you-go model based on the compute and storage resources used. This allows you to pay only for what you consume.
 
-2. **Azure Event Hubs**: It is a big data streaming platform designed to handle high-throughput, event-driven workloads. Event Hubs can handle millions of events per second and seamlessly integrate with other Azure services like Azure Functions, Azure Stream Analytics, and Azure Logic Apps. It is commonly used for real-time analytics, ingestion of telemetry data, and log aggregation.
+## Azure Cosmos
 
-3. **Azure Queue Storage**: It is a simple, asynchronous messaging service that allows decoupling and scaling of different components of an application. Queue Storage enables reliable and persistent message delivery with at-least-once delivery semantics. It is often used for creating task queues, handling asynchronous processing, and building distributed systems.
+- It is a multi-model database that supports popular data models like document, key-value, graph and columnar. This makes it very flexible for different application needs.
+- It offers global distribution and automatic replication of data across any number of Azure regions. This provides high availability and low latency access to data worldwide.
+- It scales massively to handle enormous throughput and storage requirements. Some customers have workloads with over 100 million requests per second and petabytes of storage.
+- The throughput is elastic and can be adjusted on the fly as your application's needs change, allowing you to pay only for what you use.
+- It offers multiple consistency models to balance between strong consistency and low latency as needed by your application.
+- Pricing is on a pay-per-use model based on throughput, storage and data egress.
 
-4. **Azure Relay**: It provides secure, hybrid connectivity between on-premises applications and the cloud. Relay allows you to expose on-premises services to the internet or securely consume cloud services from on-premises systems. It uses a combination of messaging and connectivity features to facilitate communication across different networks and firewalls.
-
-5. **Azure Notification Hubs**: It is a scalable push notification engine that enables sending push notifications to various platforms (iOS, Android, Windows, etc.) from a single backend API call. Notification Hubs abstracts the complexities of individual platform protocols, provides features like message tagging and segmentation, and offers rich telemetry for monitoring and analytics.
-
-# Network services
-
-Sure, here's a brief overview of Azure's networking stack:
-
-1. **Azure Virtual Network (VNet)**: This is the fundamental building block for your private network in Azure. VNet enables many types of Azure resources, such as Azure Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks.
-
-2. **Azure Load Balancer**: This provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
-
-3. **Azure VPN Gateway**: This sends encrypted traffic across a public connection to an on-premises location, or it can send the traffic across a virtual private network (VPN) tunnel to another virtual network.
-
-4. **Azure Application Gateway**: This is a web traffic load balancer that enables you to manage traffic to your web applications. It's Azure's Application Delivery Controller as a service.
-
-5. **Azure Content Delivery Network (CDN)**: This is a distributed network of servers that can efficiently deliver web content to users. CDNs store cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency.
-
-6. **Azure DNS**: This provides hosting for your DNS domain, providing name resolution using Microsoft Azure infrastructure. By hosting your domains in Azure, you can manage your DNS records using the same credentials, APIs, tools, and billing as your other Azure services.
-
-7. **Azure Traffic Manager**: This is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.
-
-8. **Azure ExpressRoute**: This lets you extend your on-premises networks into the Microsoft cloud over a private connection facilitated by a connectivity provider.
-
-9. **Azure Network Watcher**: This is a collection of network monitoring and troubleshooting tools. It provides network diagnostic and visualization tools to help you understand, diagnose, and gain insights to your network in Azure.
-
-10. **Azure Firewall**: This is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
-
-# Compute services
+# Compute
 
 **Azure Virtual Machines (VMs)**: These are on-demand, scalable computing resources. They can be used to deploy a wide range of computing solutions, like applications and servers.
 
@@ -509,3 +503,16 @@ Sure, here's a brief overview of Azure's networking stack:
 **Azure Service Fabric**: This is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers.
 
 **Azure Logic Apps**: This is a cloud service that helps you schedule, automate, and orchestrate tasks, business processes, and workflows when you need to integrate apps, data, systems, and services across enterprises or organizations.
+
+## Azure Functions
+- Functions are event-driven, meaning your code only runs when triggered by an event. This makes Functions very cost-effective since you only pay for the compute resources required to run your code.
+- Functions supports many programming languages including C#, JavaScript, Java, Python and more. This allows you to write functions using your preferred language.
+- Triggers define how a function is invoked. Common triggers include HTTP requests, timers, queues, etc. Bindings connect functions to other Azure services and resources like storage queues, tables, etc.
+- Functions has built-in auto-scaling, so it can handle varying loads efficiently without needing to manage infrastructure.
+
+## Azure Container Apps
+
+- k8s under the hood
+- Container Apps is for longer running containerized microservices, web apps, etc. Functions are better suited for short-lived, event-driven code snippets.
+- With Container Apps you manage the containers and infrastructure. Functions handles all the infrastructure management for you.
+- Container Apps gives you more control over containers and infrastructure but requires managing scaling and uptime. Functions automatically scales for you.

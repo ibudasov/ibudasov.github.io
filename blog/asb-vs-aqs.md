@@ -6,7 +6,7 @@
 - We would like to 
   - have it managed by Azure or other supplier
   - in perspective to upgrate to ASB, because we believe its features will be useful for us
-  - integrate well with [Azure Functions (AF)](https://azure.microsoft.com/en-us/products/functions/) and [Azure Container Apps (ACA)](https://learn.microsoft.com/en-us/azure/container-apps/overview)
+  - integrate well with [Azure Functions (AF)](https://azure.microsoft.com/en-us/products/functions/) and [Azure Container Apps (ACA)](https://learn.microsoft.com/en-us/azure/container-apps/overview). Primarily we are interested in integration with AF, because this is what we are planning to use. 
   - fincancially efficient
   - **POSTPONED** have certain features, which are needed for EDA. Postponed due to lack of usecases
     - **Event Storage** - at least until they are processed
@@ -50,14 +50,20 @@
     - Protocols technically are different, but this difference is eliminated due to trigger mechanism, provided by Azure
     - As the result, AF will receive message body in both cases the same way
 2. What are the costs associated with AQS and ASB, and how do they compare? Storage was not taken in account, as it is not relevant for our usecase ($0.045-$0.06 per GB per month)
-    - ASB - Shared capacity, priced at **USD 0.05** per 1 million operations per month. There is a possibility to upgrade to Standard: Dedicated capacity at a fixed price (approximately USD 668 per month)
-    - AQS - **USD 0.04** per 1 million operations
+    - ASB - Shared capacity, priced at [USD 0.05](https://azurelessons.com/azure-service-bus-pricing/) per 1 million operations per month. There is a possibility to upgrade to Standard: Dedicated capacity at a fixed price (approximately USD 668 per month)
+    - AQS - [USD 0.04](https://azure.microsoft.com/en-us/pricing/details/storage/queues/) per 1 million operations
 3. How difficult is to setup ASB & AQS?
     - ASB - there is a TF module for provisioning `azurerm_servicebus_namespace` and `azurerm_servicebus_queue`. Then a trigger of AF needs to be set up
     - AQS - we have a [module](https://dev.azure.com/cvce/Cloud_Infrastructure/_git/terraform-azurerm-milence?path=/azure_function/main.tf&version=GBmain&_a=contents) which can be extended with [AQS configuration](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_queue). Then a trigger of AF needs to be set up
 4. Do they both suport message ordering? It might be important for correct message processibg, especially given the nature of booking
     - ASB - FIFO
     - AQS - FIFO not guaranteed, but by setting the visibility timeout to a large value, you can ensure that messages are processed in the order they were added, as long as no messages fail to be processed. But this is not a foolproof method and does not guarantee strict FIFO ordering.
+
+## Excluded options
+
+- ZeroMQ might be useful for dev purposes, but due to use of AF and its ephemeral nature it is impossible. Currently we are discussing a possibility of using ACA, which would enable ZeroMQ
+- Event Grid is excluded because of it got different purpose: Message routing between Azure Services
+- Event Hub is excluded because of it got different purpose: Event Ingestion
 
 ## Proposal
 
