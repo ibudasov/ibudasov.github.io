@@ -5,6 +5,21 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## IP ranges
+- https://www.youtube.com/watch?v=eHV1aOnu7oM
+- https://www.youtube.com/watch?v=MmA0-978fSk
+
+- ipconfig / ifconfig
+- dotted quad format
+- subnet mask specifies which part of the address is the subnet, and which is the host address
+- `/24` - first 24 can be one-s (1) - 192.168.1.1 .. 192.168.1.254 
+    - 192.168.1.0 - reference to subnet
+    - 192.168.1.1 - GW
+    - 192.168.1.2 - DNS mapping
+    - 192.168.1.255 - reference to broadcast
+- /16 - is more addresses than `/24`
+
+
 ## BGP
 
 Border Gateway Protocol, is a protocol used to exchange routing information across autonomous systems on the internet. In the context of cloud engineering, BGP is often used in conjunction with VPNs or Direct Connect (in AWS) / ExpressRoute (in Azure) / Cloud Interconnect (in Google Cloud) for routing traffic between your on-premises network and your VPCs in the cloud.
