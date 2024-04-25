@@ -179,6 +179,32 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 10. **Azure Firewall**: This is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
 
+## Private Endpoint
+
+Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. The service could be an Azure service like Azure Storage, Azure Cosmos DB, SQL, etc., or your own Private Link Service.
+
+The private endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. All traffic to the service can be routed through the private endpoint, so no public internet is required. This helps to secure your network traffic as it doesn't need to traverse over the public internet.
+
+- You create a private endpoint in your VNet and associate it with an Azure service.
+- The private endpoint gets an IP address from the IP address range of your VNet.
+- You create a DNS record that maps the Azure service URL to the private IP address.
+- When your application makes a request to the Azure service, the DNS resolves the Azure service URL to the private IP address.
+- The traffic is then routed to the Azure service through the private endpoint, staying entirely within the Azure network.
+- This provides enhanced security and compliance by allowing you to consume Azure services privately from your Azure Virtual Network (VNet).
+
+## Access Point
+
+Azure Access Point, also known as Azure Front Door, is a service that offers scalable and secure entry points for fast delivery of your global web applications. It uses the anycast protocol and split TCP-based anycast to ensure high availability and instant scalability.
+
+- Routing: It uses split TCP and Microsoft's global network for improved routing.
+- URL-based routing: It allows you to route traffic based on URL paths.
+- Multiple-site hosting: You can host multiple sites behind a single Front Door.
+- Session affinity: It helps you keep a user session on the same application backend.
+- URL redirection: It allows you to redirect HTTP to HTTPS traffic.
+- Custom domains and SSL: You can use your own custom domain and secure it with SSL/TLS certificates.
+- Web Application Firewall (WAF): It protects your web applications from common exploits and vulnerabilities.
+- In terms of programming, you can manage Azure Access Point using Azure portal, Azure CLI, PowerShell, or REST API.
+
 ## VPN Gateway
 
 Azure VPN Gateway is a service that can be used to send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet. 
