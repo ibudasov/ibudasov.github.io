@@ -35,6 +35,20 @@ BGP can be used to advertise the routes of your on-premises network to the cloud
 - BGP Convergence: BGP convergence is the process of all BGP routers in the network agreeing on the best paths. This can take some time, especially in large networks.
 - BGP Stability Features: BGP includes features to maintain stability in the face of network changes. These include route dampening (which suppresses unstable routes) and BGP Graceful Restart (which allows BGP to recover from failures without disrupting network traffic).
 
+### BGP advertisement
+
+Advertisement is a process in which BGP routers communicate with each other to share information about the reachability of different network paths. This is done to establish and maintain routing tables, which are used to determine the most efficient path for data to travel from one network to another.
+
+1. A BGP router starts by advertising its directly connected networks to its BGP neighbors. This advertisement includes the IP prefix (network address and subnet mask) of the connected networks.
+
+2. The BGP neighbors receive this advertisement and add the advertised routes to their BGP routing tables. They then advertise these routes to their own BGP neighbors.
+
+3. This process continues, with each BGP router advertising the routes it learns to its neighbors. This allows all BGP routers in the network to learn about all available routes.
+
+4. If a route changes (for example, if a link goes down), the BGP router that detects the change will update its routing table and advertise the change to its neighbors. This ensures that all routers have up-to-date information about the network.
+
+5. BGP uses a set of policies and attributes (like AS-PATH, NEXT-HOP, etc.) to determine the best path for data to travel. When multiple paths are available, BGP will choose the one with the highest preference.
+
 ## Connestivity directions
 - Dept to Dept (East-West)
 - Public to Internal (North-South)
@@ -147,7 +161,7 @@ Communication between networks, also creates a hierarchy in networks. Creates in
 6. Presentation
 7. Application
 
-# Broadcast domain
+## Broadcast domain
 
 A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer. In other words, in a broadcast domain, when one device sends a broadcast message, all other devices in the same domain receive and process that message. Broadcast messages are typically used for tasks such as address resolution (like ARP in IPv4) or service discovery.
 
@@ -163,6 +177,17 @@ A broadcast domain is a logical division of a computer network, in which all nod
 4. Routers:
     * Routers operate at the network layer and separate broadcast domains by default. When a router receives a broadcast packet on one interface, it does not forward that broadcast to other interfaces.
     * Each interface on a router can be considered a separate broadcast domain. For example, if you have a router with three interfaces, each interface is in its own broadcast domain.
+
+## VNet Peering
+
+VNet Peering is a networking feature provided by Azure. It allows for seamless connections between Azure Virtual Networks (VNets). By peering two VNets, all resources in the two networks are able to communicate with each other as if they are in the same network, using their private IP addresses. 
+
+VNet Peering has several benefits:
+- It allows for high-speed, low-latency connections between resources in different VNets.
+- It's completely private and secure, as no public internet, gateways, or encryption is required in the communication between the VNets.
+- The traffic between the peered VNets is kept within the Azure network, providing a high degree of security and speed.
+
+It's important to note that the peered VNets must be in the same region and cannot overlap in IP address space.
 
 ## Subnetting
 
