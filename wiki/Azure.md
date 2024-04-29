@@ -179,7 +179,21 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 10. **Azure Firewall**: This is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
 
+## Network Security Group
+
+It's essentially a cloud-level firewall.
+This allows you to control access to your Azure resources and protect them from unwanted traffic.
+
+An NSG contains a list of Access Control List (ACL) rules that allow or deny network traffic to your VM instances in a Virtual Network. The rules can be based on source and destination IP address, port, and protocol.
+
+1. You create a Network Security Group in Azure.
+2. You define inbound and outbound security rules for that NSG. These rules can allow or deny traffic based on parameters like source IP, destination IP, source port, destination port, and protocol (TCP/UDP).
+3. You associate the NSG with one or more network interfaces or subnets.
+4. Azure applies the NSG's rules to all traffic entering or leaving the network interfaces or subnets that the NSG is associated with.
+
 ## Private Endpoint
+
+Privately access your services without sending traffic over the Internet.
 
 Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. The service could be an Azure service like Azure Storage, Azure Cosmos DB, SQL, etc., or your own Private Link Service.
 
@@ -542,3 +556,30 @@ Azure Event Hubs is a fully managed event ingestion service that can receive and
 - Container Apps is for longer running containerized microservices, web apps, etc. Functions are better suited for short-lived, event-driven code snippets.
 - With Container Apps you manage the containers and infrastructure. Functions handles all the infrastructure management for you.
 - Container Apps gives you more control over containers and infrastructure but requires managing scaling and uptime. Functions automatically scales for you.
+
+### Container Apps Env
+
+An environment in Azure Container Apps is a logical grouping of resources where you can deploy your applications. It's a boundary that separates your applications from the rest of your Azure resources. Each environment has its own dedicated compute resources, networking, and security settings. This allows you to manage and scale your applications independently.
+
+## Smart detector alert rule
+
+Detects if your application experiences an abnormal rise in the rate of HTTP requests or dependency calls that are reported as failed. The anomaly detection uses machine learning algorithms and occurs in near real time, therefore there's no need to define a frequency for this signal.
+
+To help you triage and diagnose the problem, an analysis of the characteristics of the failures and related telemetry is provided with the detection. This feature works for any app, hosted in the cloud or on your own servers, that generates request or dependency telemetry - for example, if you have a worker role that calls TrackRequest() or TrackDependency().
+
+## Log analytics workspace
+
+Log Analytics collects data from a variety of sources and uses a powerful query language to give you insights into the operation of your applications and resources. Use Azure Monitor to access the complete set of tools for monitoring all of your Azure resources.
+
+1. Connect a data source
+- Select one or more data sources to connect to the workspace
+- Azure virtual machines (VMs)
+- Windows and Linux Agents management
+- Storage account log
+- System Center Operations Manager
+2. Configure monitoring solutions
+- Add monitoring solutions that provide insights for applications and services in your environment
+View solutions
+3. Monitor workspace health
+- Create alerts to proactively detect any issue that arise in your workspace
+- Learn more about monitor workspace health
