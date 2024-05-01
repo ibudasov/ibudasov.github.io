@@ -133,14 +133,23 @@ Communication between networks, also creates a hierarchy in networks. Creates in
         - For everything else, go there
 
 ## Protocols
+- TCP (L4)
+- UDP (L4)
+- IP (L3)
+- ICMP - (L3/L4) used for `ping`
 - ARP -- address resolution protocol
 - FTP
-- HTTP
+- HTTP/HTTPS
 - TLS
-- HTTPS
 - SSL
 - DNS
 - DHCP - provides back IP address, subnet mask, default gateway, and DNS 
+
+# IPV6
+
+- much bigger
+- can be used in a subnet
+- starts with `fd....`
 
 ## OSI model
 
