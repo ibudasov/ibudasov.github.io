@@ -76,6 +76,22 @@ See [Security.md](Security.md)
 
 # Authentication/Authorization
 
+## PIM 
+
+Azure Privileged Identity Management (PIM) is a service in Azure Active Directory (Azure AD) that enables you to manage, control, and monitor access to important resources in your organization. These resources include resources in Azure AD, Azure, and other Microsoft Online Services like Office 365 or Microsoft Intune.
+
+Here are some key features of Azure PIM:
+
+1. **Just-In-Time Privileged Access**: You can enable on-demand, time-bound access to Azure resources and Azure AD. This means that users can elevate their access when needed and it will automatically expire after a certain time.
+
+2. **Assignable Roles**: Azure PIM supports all roles in Azure RBAC, Azure AD roles, and Azure AD administrative units.
+
+3. **Access Reviews**: You can perform access reviews of users with privileged roles to ensure only the right people have access.
+
+4. **Alerts and Notifications**: Get alerts when there are changes in the privileged roles assignments.
+
+5. **Audit History**: Azure PIM provides reports to audit the activities of privileged operations.
+
 ## Entra ID
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
