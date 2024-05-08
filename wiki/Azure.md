@@ -92,6 +92,12 @@ Here are some key features of Azure PIM:
 
 5. **Audit History**: Azure PIM provides reports to audit the activities of privileged operations.
 
+Includes three providers:
+
+- PIM for Microsoft Entra roles
+- PIM for Azure resources
+- PIM for Groups
+
 ## Entra ID
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
