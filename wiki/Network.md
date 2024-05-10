@@ -136,10 +136,12 @@ Communication between networks, also creates a hierarchy in networks. Creates in
 - TCP (L4)
 - UDP (L4)
 - IP (L3)
+    - **IPSec** - Internet Protocol Security, is a suite of protocols used to secure internet protocol (IP) communications by authenticating and encrypting each IP packet in a data stream. It includes protocols for establishing mutual authentication between agents at the beginning of a session and negotiation of cryptographic keys to use during the session. IPSec can be used to protect data flows between a pair of hosts, between a pair of security gateways, or between a security gateway and a host.
+        - **IKE**, which stands for Internet Key Exchange, is a protocol used in the IPSec suite for the negotiation and establishment of secure connections. It is responsible for authenticating peers, managing security associations, and establishing encryption keys. IKE operates in two phases: Phase 1 establishes a secure channel between two peers, and Phase 2 negotiates IPSec security associations and enables encrypted data transfer.
 - ICMP - (L3/L4) used for `ping`
 - ARP -- address resolution protocol
 - FTP
-- HTTP/HTTPS
+- HTTP/HTTPSw
 - TLS
 - SSL
 - DNS
