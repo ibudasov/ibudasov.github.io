@@ -256,6 +256,10 @@ Azure VPN Gateway is not always the best solution for connecting an on-premises 
 - https://learn.microsoft.com/en-us/training/modules/intro-to-azure-vpn-gateway/
 - https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways
 
+### [Advertising routes](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-p2s-advertise-custom-routes)
+
+
+
 ## Azure vWAN
 
 Azure Virtual WAN is a networking service that brings many networking, security, and routing functionalities together to provide a single operational interface. Some of the main features include:
