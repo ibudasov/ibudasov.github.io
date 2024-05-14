@@ -5,6 +5,31 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## VPN
+
+## Default route
+
+The default route, often represented as `0.0.0.0`, is typically provided by a router or a gateway. When a device connects to a network, the router or gateway usually provides the device with an IP address and other network information, including the default route, through a protocol called DHCP (Dynamic Host Configuration Protocol).
+
+In some cases, the default route can be manually set on a device. This is common in server environments or in specific network configurations where automatic configuration through DHCP is not desired.
+
+In the context of a VPN, the default route can be set by the VPN server. This is useful when you want all network traffic from a device to go through the VPN, effectively hiding the device's original IP address. 
+
+If it is `0.0.0.0` -- there is no specific route defined
+
+### Route advertisement
+
+Advertising custom routes in a VPN Gateway refers to the process of manually configuring the routes that a VPN Gateway advertises to connected devices. This is particularly useful in scenarios where you want to control the traffic flow in your network or when you need to connect to specific resources that are not part of the default route advertisement.
+
+For example
+- by pushing specific routes to VPN clients, you advertise which subnets will be accessible throught these routes
+- do not push default route `0.0.0.0`, because all the traffic, no matter in the private notwork or in the Internet, will be going throug the VPN gateway
+-  if you have a network segment in your Azure virtual network that you want to make accessible to your P2S VPN clients, you can add a custom route for that network segment. Once the custom route is advertised, the P2S VPN clients will be able to reach the resources in that network segment.
+
+
+### Forced tunneling
+You can direct all traffic to the VPN tunnel by advertising 0.0.0.0/1 and 128.0.0.0/1 as custom routes to the clients. The reason for breaking 0.0.0.0/0 into two smaller subnets is that these smaller prefixes are more specific than the default route that may already be configured on the local network adapter and, as such, will be preferred when routing traffic.
+
 ## IP ranges
 - https://www.youtube.com/watch?v=eHV1aOnu7oM
 - https://www.youtube.com/watch?v=MmA0-978fSk
@@ -12,6 +37,9 @@ A union of correlated hosts
 - ipconfig / ifconfig
 - dotted quad format
 - subnet mask specifies which part of the address is the subnet, and which is the host address
+- `/24` refers to the last octet
+    - < `/24` refers to more last octets than the last one
+    - > `/24` refers to a part of the last octet - so you can split the `/24` subnet to multiple smaller subnets
 - `/24` - first 24 can be one-s (1) - 192.168.1.1 .. 192.168.1.254 
     - 192.168.1.0 - reference to subnet
     - 192.168.1.1 - GW
