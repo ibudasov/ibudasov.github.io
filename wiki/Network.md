@@ -5,6 +5,13 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## 5-tuple
+
+A 5-tuple refers to a set of five different values that comprise a Transmission Control Protocol/Internet Protocol (TCP/IP) connection. It includes 
+- a source IP address/port number
+- destination IP address/port number 
+- the protocol in use
+
 ## VPN
 
 ## Default route
