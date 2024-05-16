@@ -181,6 +181,10 @@ Communication between networks, also creates a hierarchy in networks. Creates in
 - SSL
 - DNS
 - DHCP - provides back IP address, subnet mask, default gateway, and DNS 
+    - Kea DHCP is an open-source software project that provides a high-performance, extensible DHCP (Dynamic Host Configuration Protocol) server engine that is designed to be easily modified and extended with hooks libraries.
+    Kea DHCP supports both DHCPv4 and DHCPv6 protocols, which are used to assign and manage IP addresses in a network. The server supports features like address pools, subnet selection, lease reservation, host reservation, and can store lease information in a database.
+    Kea is developed and maintained by the Internet Systems Consortium (ISC) and is a successor to the ISC's DHCP server software, also known as ISC DHCP or dhcpd.
+
 
 # IPV6
 
