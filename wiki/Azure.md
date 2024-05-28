@@ -258,7 +258,10 @@ Azure VPN Gateway is not always the best solution for connecting an on-premises 
 
 ### [Advertising routes](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-p2s-advertise-custom-routes)
 
-
+- https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing
+- https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about
+- https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+- https://blog.cloudtrooper.net/2023/02/06/virtual-network-gateways-routing-in-azure/
 
 ## Azure vWAN
 
