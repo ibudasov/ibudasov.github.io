@@ -522,12 +522,6 @@ Azure Event Hubs is a fully managed event ingestion service that can receive and
 - Azure Database for **PostgreSQL**: A fully managed, scalable PostgreSQL relational database with high availability and security built in at no extra cost.
 - Azure Database for **MariaDB**: A fully managed, scalable MariaDB relational database with high availability and security built in at no extra cost.
 
-## Postgres SQL backup
-
-- https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-backup-restore#backup-overview
-- The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
-- These backup files can't be exported or used to create servers outside Azure Database for PostgreSQL flexible server. 
-
 ## NoSQL Databases
 
 - **Azure Cosmos DB**: A globally distributed, multi-model database service. It supports document, key-value, wide-column, and graph databases.
@@ -545,6 +539,25 @@ Azure Event Hubs is a fully managed event ingestion service that can receive and
 - Some key features include point-in-time restore for backup and recovery, connection pooling, auditing, threat detection, and integration with other Azure services.
 - It offers built-in high availability with automatic failover to a secondary server in case of outages. The data is replicated synchronously across two to four servers for redundancy.
 - The pricing is on a pay-as-you-go model based on the compute and storage resources used. This allows you to pay only for what you consume.
+
+### Postgres SQL backup
+
+- https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-backup-restore#backup-overview
+- The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
+- These backup files can't be exported or used to create servers outside Azure Database for PostgreSQL flexible server. 
+
+### Postgres Flex
+
+- https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview 
+- Is created within an Azure subscription.
+- Is the parent resource for databases.
+- Provides a namespace for databases.
+- Is a container with strong lifetime semantics. Deleting a server deletes the contained databases.
+- Collocates resources in a region.
+- Provides a connection endpoint for server and database access.
+- Provides the scope for management policies that apply to its databases, such as login, firewall, users, roles, and configurations.
+- Is available in multiple versions. For more information, see the supported PostgreSQL database versions.
+- Is extensible by users. 
 
 ## Azure Cosmos
 
