@@ -5,6 +5,23 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+## Subnets vs VLANs
+
+- SUbnets
+    - Subnets are physical
+    - Subnet is a network of computers connected with a switch
+    - Computers in the subnet broadcast, using the switch. Called **broadcast domain**
+    - subnets are for limiting broadcasting, connected with routers. 
+    - Subnets are connected with a router
+    - Subnets are for security reason - to limit the broadcasting to separate domains, representing departments of the company. Also Departments do not need to see hosts of other departments
+- VLANs 
+    - are virtual
+    - Virtual Local Area Network
+    - VLAN enabled switch is used
+    - no routers
+    - makes possible to configure VLANS virtually, not physically
+    - 
+
 ## 5-tuple
 
 A 5-tuple refers to a set of five different values that comprise a Transmission Control Protocol/Internet Protocol (TCP/IP) connection. It includes 
