@@ -625,3 +625,8 @@ View solutions
 3. Monitor workspace health
 - Create alerts to proactively detect any issue that arise in your workspace
 - Learn more about monitor workspace health
+
+# Firewall
+
+- DNAT - destination network address translation
+- SNAT - source network address translation
