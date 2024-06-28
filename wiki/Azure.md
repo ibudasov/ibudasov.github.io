@@ -119,6 +119,18 @@ Object Model
 - Microsoft Entra account — An Azure AD account is an identity that's created through Microsoft Entra ID or another Microsoft cloud service, such as Microsoft 365.
 - Azure tenant (directory) — An Azure tenant is a single dedicated and trusted instance of Microsoft Entra ID. Each tenant (also called a directory) represents a single organization. When your organization signs up for a Microsoft cloud service subscription, a new tenant is automatically created.
 - Subscription — An Azure subscription is used to pay for Azure cloud services. Each subscription is joined to a single tenant. You can have multiple subscriptions.
+- user account acceess
+  - type of user
+    - admin - can manage other resources and users
+    - member - can amaga their data, but not others
+    - guest
+  - role assignment
+  - ownership of objects
+
+Access management in Microsoft Entra ID
+
+- **Microsoft Entra roles**: Use Microsoft Entra roles to manage Microsoft Entra ID-related resources like users, groups, billing, licensing, application registration, and more.
+- **Role-based access control (RBAC)** for Azure resources: Use RBAC roles to manage access to Azure resources like virtual machines, SQL databases, or storage. For example, you could assign an RBAC role to a user to manage and delete SQL databases in a specific resource group or subscription.
 
 AD vs Entra ID
 
