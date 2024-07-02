@@ -225,6 +225,15 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 10. **Azure Firewall**: This is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
 
+## Azure Private Link 
+provides private connectivity from a virtual network to Azure platform as a service (PaaS), customer-owned, or Microsoft partner services. Private Link simplifies the network architecture and secures the connection between endpoints in Azure. The service eliminates data exposure to the public internet.
+
+## Reserved addresses	
+192.168.1.0	This value identifies the virtual network address.
+192.168.1.1	Azure configures this address as the default gateway.
+192.168.1.2 and 192.168.1.3	Azure maps these Azure DNS IP addresses to the virtual network space.
+192.168.1.255	This value supplies the virtual network broadcast address.
+
 ## Network Security Group
 
 It's essentially a cloud-level firewall.
@@ -236,6 +245,18 @@ An NSG contains a list of Access Control List (ACL) rules that allow or deny net
 2. You define inbound and outbound security rules for that NSG. These rules can allow or deny traffic based on parameters like source IP, destination IP, source port, destination port, and protocol (TCP/UDP).
 3. You associate the NSG with one or more network interfaces or subnets.
 4. Azure applies the NSG's rules to all traffic entering or leaving the network interfaces or subnets that the NSG is associated with.
+
+You can assign network security groups to a subnet and create a protected screened subnet (also referred to as a demilitarized zone or DMZ). A DMZ acts as a buffer between resources within your virtual network and the internet.
+- Use the network security group to restrict traffic flow to all machines that reside within the subnet.
+- Each subnet can have a maximum of one associated network security group.
+
+## Application Security Group
+
+Is a way to join resources in a group, which can be specified as a source or destination in NSG, in order to simplify specifying individual IP adresses
+
+### Default NSG
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-network-security-groups/media/inbound-rules-a554314b.png)
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-network-security-groups/media/outbound-rules-ff90d802.png)
 
 ## Private Endpoint
 
