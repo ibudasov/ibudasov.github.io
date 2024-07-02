@@ -102,6 +102,7 @@ Includes three providers:
 
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-active-directory/media/azure-active-directory-a3b1df09.png)
 
+- each Azure subscription is associated with a single Microsoft Entra directory
 - for internal SaaS applications
 - for the apps developed inside of the org
 - similar to Active Directory on-prem, but in the cloud
@@ -153,6 +154,8 @@ In the context of Azure, OIDC is used in Azure Active Directory (Azure AD) to en
 
 ## RBAC
 
+![](https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/media/2-azuread-and-azure-roles.png)
+
 https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
 
 > RBAC uses an allow model for access. By default everything is forbidden. Roles summarize: `read` + `write` might come from 2 different roles
@@ -162,11 +165,20 @@ https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
 - Allow a user to manage all resources in a resource group, such as VMs, websites, and virtual subnets.
 - Allow an application to access all resources in a resource group.
 
+### built-in roles
+
+- Owner: Has full access to all resources, including the right to delegate access to others
+- Contributor: Can create and manage all types of Azure resources, but can’t grant access to others
+- Reader: Can view existing Azure resources
+- User Access Administrator: Lets you manage user access to Azure resources
+
 ### Object model
 - **Security principal**	An object that represents something that requests access to resources.
 - **Role** definition	A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.
 - **Scope**	The boundary for the requested level of access, or "how much" access is granted.
 - **Assignment**	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.
+
+![](https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/media/2-rbac-overview.png)
 
 ### Role definition
 ![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
