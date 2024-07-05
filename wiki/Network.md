@@ -5,6 +5,15 @@ A union of correlated hosts
 - Each host has an address within that space
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
+
+## Static IP addresses useful for
+
+- DNS name resolution, where a change in the IP address requires updating host records.
+- IP address-based security models that require apps or services to have a static IP address.
+- TLS/SSL certificates linked to an IP address.
+- Firewall rules that allow or deny traffic by using IP address ranges.
+- Role-based virtual machines such as Domain Controllers and DNS servers.
+
 ## Subnets vs VLANs
 
 - SUbnets
