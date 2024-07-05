@@ -205,11 +205,44 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 # Network
 
+## Peering
+
+Virtual network peering is nontransitive. The communication capabilities in a peering are available to only the virtual networks and resources in the peering. Other mechanisms have to be used to enable traffic to and from resources and networks outside the private peering network.
+
+There are a few ways to extend the capabilities of your peering for resources and virtual networks outside your peering network:
+
+- Hub and spoke networks
+- User-defined routes
+- Service chaining
+
+## UDR
+
+- UDRs control network traffic by defining routes that specify the next hop of the traffic flow.
+- The next hop can be one of the following targets:
+  - Virtual network gateway
+  - Virtual network
+  - Internet
+- Network virtual appliance (NVA)
+- Similar to system routes, UDRs also access route tables.
+- Each route table can be associated to multiple subnets.
+- Each subnet can be associated to one route table only.
+
+## Services
+
 1. **Azure Virtual Network (VNet)**: This is the fundamental building block for your private network in Azure. VNet enables many types of Azure resources, such as Azure Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks.
 
 2. **Azure Load Balancer**: This provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
 
 3. **Azure VPN Gateway**: This sends encrypted traffic across a public connection to an on-premises location, or it can send the traffic across a virtual private network (VPN) tunnel to another virtual network.
+- A virtual network can have only one VPN gateway.
+- Gateway transit is supported for both regional and global virtual network peering.
+- When you allow VPN gateway transit, the virtual network can communicate to resources outside the peering. In our sample illustration, the gateway subnet gateway within the hub virtual network can complete tasks such as:
+  - Use a site-to-site VPN to connect to an on-premises network.
+  - Use a vnet-to-vnet connection to another virtual network.
+  - Use a point-to-site VPN to connect to a client.
+- Gateway transit allows peered virtual networks to share the gateway and get access to resources. With this implementation, you don't need to deploy a VPN gateway in the peer virtual network.
+
+You can apply network security groups in a virtual network to block or allow access to other virtual networks or subnets. When you configure virtual network peering, you can choose to open or close the network security group rules between the virtual networks.
 
 4. **Azure Application Gateway**: This is a web traffic load balancer that enables you to manage traffic to your web applications. It's Azure's Application Delivery Controller as a service.
 
