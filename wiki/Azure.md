@@ -245,6 +245,12 @@ There are a few ways to extend the capabilities of your peering for resources an
 You can apply network security groups in a virtual network to block or allow access to other virtual networks or subnets. When you configure virtual network peering, you can choose to open or close the network security group rules between the virtual networks.
 
 4. **Azure Application Gateway**: This is a web traffic load balancer that enables you to manage traffic to your web applications. It's Azure's Application Delivery Controller as a service.
+- Azure Application Gateway offers two primary methods for routing traffic:
+  - Path-based routing sends requests with different URL paths to different pools of back-end servers.
+  - Multi-site routing configures more than one web application on the same application gateway instance.
+- redirect traffic
+- rewrite HTTP headers
+
 
 5. **Azure Content Delivery Network (CDN)**: This is a distributed network of servers that can efficiently deliver web content to users. CDNs store cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency.
 

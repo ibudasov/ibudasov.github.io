@@ -6,6 +6,25 @@ A union of correlated hosts
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
 
+## DNS
+Configuration information for your DNS server is stored as a file within a zone on your DNS server. Each file is called a record. The following record types are the most commonly created and used:
+
+A is the host record, and is the most common type of DNS record. It maps the domain or host name to the IP address.
+CNAME is a Canonical Name record that's used to create an alias from one domain name to another domain name. If you had different domain names that all accessed the same website, you'd use CNAME.
+MX is the mail exchange record. It maps mail requests to your mail server, whether hosted on-premises or in the cloud.
+TXT is the text record. It's used to associate text strings with a domain name. Azure and Microsoft 365 use TXT records to verify domain ownership.
+Additionally, there are the following record types:
+
+Wildcards
+CAA (certificate authority)
+NS (name server)
+SOA (start of authority)
+SPF (sender policy framework)
+SRV (server locations)
+The SOA and NS records are created automatically when you create a DNS zone by using Azure DNS.
+
+
+
 ## Static IP addresses useful for
 
 - DNS name resolution, where a change in the IP address requires updating host records.
@@ -13,6 +32,13 @@ A union of correlated hosts
 - TLS/SSL certificates linked to an IP address.
 - Firewall rules that allow or deny traffic by using IP address ranges.
 - Role-based virtual machines such as Domain Controllers and DNS servers.
+
+## Private IP
+ There are three ranges of nonroutable IP addresses that are designed for internal networks that won't be sent over internet routers:
+
+- 10.0.0.0 to 10.255.255.255
+- 172.16.0.0 to 172.31.255.255
+- 192.168.0.0 to 192.168.255.255
 
 ## Subnets vs VLANs
 
