@@ -115,6 +115,68 @@ IaaS
 - Hypervisor and everything below it
 
 
+## Identity
+
+Who?
+- Identity
+- Princiipal
+- Role - role of somebody, an abstract Identity
+
+What?
+- Action
+- with condition 
+
+When?
+- Until when allowed?
+
+Where?
+- from specific CIDR
+
+------
+
+Auuthentication
+- who?
+
+Auuthorization
+- what actions or resouurces
+- permissions and privileges
+- foor all the systems and adjecant systems
+
+Auditing
+- who did what in which system
+
+> PRO TIP: define your own roles, instead of using existing, to respect the principle oof least privelege
+
+## To learn
+
+https://github.com/RhinoSecurityLabs/cloudgoat
+https://learntocloud.guide/#/
+https://cloudbreach.io/labs/
+https://cyberwoxacademy.com/azure-cloud-detection-lab-project/
+http://flaws2.cloud
+https://learntocloud.guide/#/
+
+
+https://www.nojones.net/posts/breaking-into-cloudsec
+
+
+
+https://www.youtube.com/playlist?list=PLDqMNdDvMsRn_ocTwQJR_eXMnv6K2I8eV
+
+https://www.youtube.com/watch?v=RoZeVbbZ0o0&t=0s
+
+https://www.youtube.com/playlist?list=PLDqMNdDvMsRndwjXFmus-p7p7Erd57Dvx
+
+https://www.youtube.com/watch?v=ZzeMNGFv12A&t=0s
+
+https://www.youtube.com/watch?v=op4mShTfNwk&t=0s
+
+https://www.youtube.com/watch?v=Nz0CrOzeVl0&t=3893s
+
+
+
+
 ## Links
 - https://www.youtube.com/watch?v=oBf5lrmquYI
 - https://www.youtube.com/watch?v=jI8IKpjiCSM
+- https://www.youtube.com/watch?v=7ZqVRYVmRjM
