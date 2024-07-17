@@ -18,6 +18,7 @@
 - [Telegraf](Telegraf.md)
 - [Grafana](Grafana.md)
 - [Influx](Influx.md)
+- [Ansible](Ansible.md)
 
 ## Soft Skills
 

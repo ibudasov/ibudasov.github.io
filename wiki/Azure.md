@@ -215,6 +215,10 @@ There are a few ways to extend the capabilities of your peering for resources an
 - User-defined routes
 - Service chaining
 
+## Source IP affinity
+
+use case for source IP affinity is media upload. In many implementations, a client initiates a session through a TCP protocol and connects to a destination IP address. This connection remains open throughout the upload to monitor progress, but the file is uploaded through a separate UDP protocol.
+
 ## UDR
 
 - UDRs control network traffic by defining routes that specify the next hop of the traffic flow.
@@ -223,6 +227,7 @@ There are a few ways to extend the capabilities of your peering for resources an
   - Virtual network
   - Internet
 - Network virtual appliance (NVA)
+  - are virtual machines that control the flow of network traffic by controlling routing. You'll typically use them to manage traffic flowing from a perimeter-network environment to other networks or subnets.
 - Similar to system routes, UDRs also access route tables.
 - Each route table can be associated to multiple subnets.
 - Each subnet can be associated to one route table only.

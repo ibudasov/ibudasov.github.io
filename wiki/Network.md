@@ -64,6 +64,25 @@ A 5-tuple refers to a set of five different values that comprise a Transmission 
 - destination IP address/port number 
 - the protocol in use
 
+## Next Hop
+
+The Next hop shows the network path taken by traffic sent to each address prefix. The path can be one of the following hop types:
+
+- Virtual network: A route is created in the address prefix. The prefix represents each address range created at the virtual-network level. If multiple address ranges are specified, multiple routes are created for each address range.
+- Internet: The default system route 0.0.0.0/0 routes any address range to the internet, unless you override Azure's default route with a custom route.
+- None: Any traffic routed to this hop type is dropped and doesn't get routed outside the subnet. By default, the following IPv4 private-address prefixes are created: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. The prefix 100.64.0.0/10 for a shared address space is also added. None of these address ranges are globally routable.
+
+## Perimeter network (DMZ)
+
+A perimeter network, also known as a demilitarized zone (DMZ), is a physical or logical subnetwork that contains and exposes an organization's external-facing services to an untrusted network, usually the internet. The purpose of a perimeter network is to add an additional layer of security to an organization's local area network (LAN); an external attacker only has access to equipment in the DMZ, rather than any other part of the network.
+
+Key characteristics of a perimeter network include:
+- **Isolation**: It is isolated from the internal network to prevent direct access to internal systems.
+- **Controlled Access**: It provides controlled access to services that need to be accessible from the outside, such as web servers, email servers, and DNS servers.
+- **Security**: It typically includes firewalls and other security measures to monitor and control incoming and outgoing traffic.
+
+In summary, a perimeter network serves as a buffer zone between the untrusted external network and the trusted internal network, enhancing security by limiting the exposure of internal systems.
+
 ## VPN
 
 ## Default route
