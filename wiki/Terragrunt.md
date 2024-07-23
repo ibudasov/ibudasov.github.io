@@ -17,6 +17,5 @@ brew install terragrunt
 ```sh
 terragrunt --terragrunt-non-interactive --terragrunt-debug output-all
 
-terragrunt 
-
+terragrunt plan --terragrunt-debug
 ```
