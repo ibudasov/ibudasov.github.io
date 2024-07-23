@@ -12,4 +12,11 @@ https://terragrunt.gruntwork.io/docs/getting-started/quick-start/
 brew install terragrunt
 ```
 
+## Useful
 
+```sh
+terragrunt --terragrunt-non-interactive --terragrunt-debug output-all
+
+terragrunt 
+
+```
