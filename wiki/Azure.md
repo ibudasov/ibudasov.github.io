@@ -70,6 +70,19 @@ More: https://learn.microsoft.com/en-us/azure/developer/terraform/overview-azapi
 
 > 💡 Use parameters for settings that vary according to the environment
 
+# Compute
+
+Azure Storage offers four data services that can be accessed by using an Azure storage account:
+- Azure Blob Storage (containers): A massively scalable object store for text and binary data.
+  - Serving images or documents directly to a browser.
+  - Storing files for distributed access.
+  - Streaming video and audio.
+  - Storing data for backup and restore, disaster recovery, and archiving.
+  - Storing data for analysis by an on-premises or Azure-hosted service.
+- Azure Files: Managed file shares for cloud or on-premises deployments.
+  - Azure Files enables you to set up highly available network file shares. Shares can be accessed by using the Server Message Block (SMB) protocol and the Network File System (NFS) protocol. Multiple virtual machines can share the same files with both read and write access. You can also read the files by using the REST interface or the storage client libraries.
+- Azure Queue Storage: A messaging store for reliable messaging between application components.
+- Azure Table Storage: A service that stores nonrelational structured data (also known as structured NoSQL data).
 
 # Managed certificates
 See [Security.md](Security.md)
