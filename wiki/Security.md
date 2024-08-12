@@ -1,6 +1,47 @@
 # Security
 - Security meant to be redundant (remember 2FA)
 
+## ISMS
+
+InternetSecurity Management System
+- Processes
+- ...
+
+## Security standards
+
+- ISO 27001
+  - there is a whole family of these certificates
+  - Benefits
+    - secure all the information in all forms
+    - attack resilience
+    - protect what matters  - and avoid what does not
+    - respond to evolving threats
+    - holistic approach 
+- PCI DSS
+  - Payment Card Industry Data Securit Standard
+  - for creditcards
+  - for whoever wants to process and store CC data
+  - PCI breach is alwas a GDPR breach 
+  - 12requirements
+  - notorious
+
+Framework
+- Cber Securit Framework CSF
+- Governance - 
+  - org context, mission, goal. 
+  - Risk - appetite
+  - rolesof people
+  - policies according to the mission, risks and roles
+- Identif
+  - assets
+    - data, 
+    - hardware, 
+    - software
+    - people identities
+  
+
+
+
 ## SSL/TSL certificates
 
 These are small data files that digitally bind a cryptographic key to an organization's details. When installed on a web server, it activates the padlock and the https protocol (over port 443) and allows secure connections from a web server to a browser.
