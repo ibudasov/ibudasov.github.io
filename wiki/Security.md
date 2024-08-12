@@ -1,15 +1,9 @@
 # Security
 - Security meant to be redundant (remember 2FA)
 
-## ISMS
+## CS standards
 
-InternetSecurity Management System
-- Processes
-- ...
-
-## Security standards
-
-- ISO 27001
+- ISO/IEC 27001
   - there is a whole family of these certificates
   - Benefits
     - secure all the information in all forms
@@ -17,6 +11,14 @@ InternetSecurity Management System
     - protect what matters  - and avoid what does not
     - respond to evolving threats
     - holistic approach 
+  - links 
+    - https://www.youtube.com/watch?v=x792wXSeAhA
+- ISO/IEC 27002
+  - Code of practice for ISC
+- ISO/IEC 27701
+  - PIMS -- Privacy information management system
+- ISO 31000
+  - Risk management Practices
 - PCI DSS
   - Payment Card Industry Data Securit Standard
   - for creditcards
@@ -24,22 +26,64 @@ InternetSecurity Management System
   - PCI breach is alwas a GDPR breach 
   - 12requirements
   - notorious
+- NIS Regulations - Network Information Systems
+  - confidentiality - not available/disclosed to unauthorized ppl, entities or processes
+  - integrity - information is complete and acurate and protected from corruption
+  - availability - info is available and usable as and when authorized user needs it
+- SSAE SOC 2 Type I / II
+  - Audit system
+  - Trust Services Criteria - security controls
+  - FW, intruson detection, MFA
+- CSA - Cloud Security Alliance
+  - for non-profit org
+  - cloud specific security controls
+  - Controls are mapped to standards, best practices and regulations
+  - enterprise architecture
+  - build a roadmap
 
-Framework
-- Cber Securit Framework CSF
-- Governance - 
-  - org context, mission, goal. 
-  - Risk - appetite
-  - rolesof people
-  - policies according to the mission, risks and roles
-- Identif
-  - assets
-    - data, 
-    - hardware, 
-    - software
-    - people identities
-  
+## CSF -- Framework 
 
+- Purpose
+  - Governance 
+    - org context, mission, goal
+    - Risk appetite
+    - roles of people
+    - policies according to the mission, risks and roles
+  - Identif
+    - assets
+      - data
+      - hardware
+      - software
+      - people identities
+- CIS - Center for Internet Security
+ - CIS CSC - Critical Security Controls
+ - categorized per company size
+ - for it pros
+ - got actionable items
+- NIST RMF
+  - National Institute of Standards and Technology Risk Management Framework
+  - 6 steps
+- NIST CSF
+  - Cyber Security Framework
+  - Identify, Protect, Detect, Respond and Recover
+  - Framework implementation tiers
+- ISMS - InternetSecurity Management System
+  - Processes  
+
+## CS Certifications
+
+- CompTIA
+  - Network+ 
+  - A+
+  - Security+ - gatekeeper for many jobs, A-tier
+- Defensive OSCP - A-tier
+- ISACA
+- CISSP - A-tier - the best
+- Cloud
+  - CCSK - top tier
+    - CCSP - pretty similar 
+  - Azure Security Engineer - A-tier
+  - Google professional cloud security engineer
 
 
 ## SSL/TSL certificates
