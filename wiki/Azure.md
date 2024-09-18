@@ -218,6 +218,16 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 # Network
 
+## DNS Private Resolver vs DNS Proxy
+
+- https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/azure-firewall-dns-proxy/ 
+- https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview
+- https://learn.microsoft.com/en-us/azure/firewall/dns-settings?tabs=browser#dns-proxy 
+- https://journeyofthegeek.com/2019/11/14/dns-in-microsoft-azure-part-1/
+- https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16 
+- https://learn.microsoft.com/en-us/azure/firewall/dns-details
+
+
 ## Peering
 
 Virtual network peering is nontransitive. The communication capabilities in a peering are available to only the virtual networks and resources in the peering. Other mechanisms have to be used to enable traffic to and from resources and networks outside the private peering network.
