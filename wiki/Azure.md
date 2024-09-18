@@ -226,6 +226,8 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 - https://journeyofthegeek.com/2019/11/14/dns-in-microsoft-azure-part-1/
 - https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16 
 - https://learn.microsoft.com/en-us/azure/firewall/dns-details
+- https://www.youtube.com/watch?v=tR__XtE83zY
+- https://ystatit.medium.com/azure-firewall-with-custom-dns-and-dns-proxy-66e9ce9de67a 
 
 
 ## Peering
