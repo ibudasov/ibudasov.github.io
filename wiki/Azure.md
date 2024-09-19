@@ -218,6 +218,14 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 
 # Network
 
+## DCIM
+
+DCIM stands for Data Center Infrastructure Management. It refers to the tools, processes, and methodologies used to manage, monitor, and optimize the physical and logical infrastructure of a data center. 
+
+## Overlay
+
+A network overlay is a virtual network that is built on top of an existing physical network infrastructure. It allows for the creation of multiple, isolated virtual networks that can run on the same physical hardware. This is achieved by encapsulating the network traffic of the virtual networks within the physical network's packets, enabling the virtual networks to be abstracted from the underlying physical network.
+
 ## DNS Private Resolver vs DNS Proxy
 
 - https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/azure-firewall-dns-proxy/ 
