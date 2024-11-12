@@ -216,6 +216,11 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 - **User Groups**: These are primarily used to manage users within Azure Active Directory (Azure AD). A user group is a collection of users, and when a user is added to a group, the user receives the permissions that are assigned to the group. This makes it easier to manage permissions for a collection of users, rather than having to manage permissions for each individual user.
 - **Access Groups**: These are used within Azure Resource Manager to manage access to Azure resources. An access group, also known as a role-based access control (RBAC) group, is a collection of users, groups, and applications that are granted access to Azure resources. The access is granted by assigning a role to the group, and the role defines the actions that the members of the group can perform on the resources.
 
+# Backup
+
+- Recovery Time Objective (RTO) is the target time within which a business process must be restored after a disaster occurs to avoid unacceptable consequences. For instance, if a critical application goes down due to a server failure and the business can only tolerate a maximum of four hours of downtime, then the RTO is four hours.
+- Recovery Point Objective (RPO) is the maximum amount of data loss, measured in time, that your organization can sustain during an event.
+
 # Network
 
 ## DCIM
