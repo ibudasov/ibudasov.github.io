@@ -221,6 +221,10 @@ User Groups are used for managing users in Azure AD, while Access Groups (RBAC g
 - Recovery Time Objective (RTO) is the target time within which a business process must be restored after a disaster occurs to avoid unacceptable consequences. For instance, if a critical application goes down due to a server failure and the business can only tolerate a maximum of four hours of downtime, then the RTO is four hours.
 - Recovery Point Objective (RPO) is the maximum amount of data loss, measured in time, that your organization can sustain during an event.
 
+- locally redundant storage (LRS),
+-  Geo-redundant storage (GRS), 
+- or zone-redundant storage (ZRS).
+
 # Network
 
 ## DCIM
