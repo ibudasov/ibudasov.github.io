@@ -53,6 +53,11 @@ https://marketplace.visualstudio.com/items?itemName=azapi-vscode.azapi
 
 More: https://learn.microsoft.com/en-us/azure/developer/terraform/overview-azapi-provider
 
+
+## Logs
+
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/configure-log-analytics/media/query-tables-f3872e3a.png)
+
 ## PowerShell
 
 - can be connected to your Account/Subscription
