@@ -131,6 +131,12 @@ User types
 - External member: These users authenticate using an external account, but have member access to your tenant. These types of users are common in multitenant organizations.
 - External guest: These users are true guests of your tenant who authenticate using an external method and who have guest-level privileges.
 
+Membership types:
+- Assigned: Lets you add specific users as members of a group and have unique permissions.
+- Dynamic user: Lets you use dynamic membership rules to automatically add and remove members. If a member's attributes change, the system looks at your dynamic group rules for the directory to see if the member meets the rule requirements (is added), or no longer meets the rules requirements (is removed).
+- Dynamic device: Lets you use dynamic group rules to automatically add and remove devices. If a device's attributes change, the system looks at your dynamic group rules for the directory to see if the device meets the rule requirements (is added), or no longer meets the rules requirements (is removed).
+![alt text](https://learn.microsoft.com/en-us/training/wwl-azure/manage-identities-microsoft-entra-id/media/microsoft-entra-identity-access-management-4ca9b9bc.png)
+
 Features
 - SSO
 - all the platforms
