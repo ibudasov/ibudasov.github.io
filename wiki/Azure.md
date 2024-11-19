@@ -125,6 +125,12 @@ Includes three providers:
 - for the apps developed inside of the org
 - similar to Active Directory on-prem, but in the cloud
 
+User types
+- Internal member: These users are most likely full-time employees in your organization.
+- Internal guest: These users have an account in your tenant, but have guest-level privileges. It's possible they were created within your tenant prior to the availability of B2B collaboration.
+- External member: These users authenticate using an external account, but have member access to your tenant. These types of users are common in multitenant organizations.
+- External guest: These users are true guests of your tenant who authenticate using an external method and who have guest-level privileges.
+
 Features
 - SSO
 - all the platforms
