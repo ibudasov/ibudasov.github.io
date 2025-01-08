@@ -12,7 +12,7 @@ echo "source $(brew --prefix)/etc/bash_completion.d/az" >> ~/.zshrc
 
 # https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash
 az login
-az account list --query "[?user.name=='igor.budasov@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
+az account list --query "[?user.name=='user@gmail.com'].{Name:name, ID:id, Default:isDefault}" --output Table
 
 az account set --subscription "4167d2fe-8b0c-banaan-acbe-0b613ec53c33"
 

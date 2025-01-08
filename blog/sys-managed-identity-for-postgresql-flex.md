@@ -19,7 +19,7 @@ The smartest way is to use System Managed Identity
 - https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-manage-azure-ad-users#enable-microsoft-entra-authentication-for-an-existing-postgresql-role-using-sql
   - login as an admin into Postgres: PostgreSQL Flex -> DB -> Connect
     ```
-    export PGUSER=adm_igor.budasov@cvchargingeurope.onmicrosoft.com
+    export PGUSER=user@domain.onmicrosoft.com
     export PGPASSWORD="$(az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken)"
     export PGHOST=psql-flex-mil-common-bkg-acc-we.postgres.database.azure.com
     export PGPORT=5432

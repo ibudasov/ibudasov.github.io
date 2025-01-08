@@ -1,4 +1,4 @@
-# Igor Budasov
+# Igor
 
 16 years in Software engineering, 10 of them in Backend, 7 of them in Dev/Ops/SRE, 5 Cloud engineering. 
 
