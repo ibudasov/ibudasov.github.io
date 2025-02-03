@@ -1,5 +1,7 @@
 # Tools
 
+[Overview](AZ-104-Whiteboard-v2.png)
+
 ## Quickstart
 
 ```sh
