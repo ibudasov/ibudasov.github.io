@@ -6,6 +6,36 @@ A union of correlated hosts
 - https://www.youtube.com/watch?v=H7-NR3Q3BeI&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=2&t=655s
 
 
+## SD-Branch
+
+SD-Branch (Software-Defined Branch) is a networking architecture that applies software-defined principles to branch office networks. 
+
+SD-Branch is essentially the evolution of SD-WAN (Software-Defined Wide Area Network) that extends beyond just the WAN connection to encompass the entire branch network infrastructure. Here's how it works:
+
+- Integrated approach: SD-Branch combines multiple network functions—SD-WAN, routing, security, and LAN/WLAN management—into a single, unified platform managed through centralized software.
+- Virtualization: It virtualizes network functions that were traditionally handled by separate hardware devices (routers, firewalls, switches, wireless controllers) into software that runs on standard hardware.
+- Centralized management: All branch locations are managed through a central controller or cloud-based console, allowing for consistent policy deployment across the entire network.
+- Automated operations: SD-Branch enables automated deployment, configuration, and updates across all branch locations, reducing the need for IT staff visits to remote sites.
+- Intent-based networking: Administrators can define business intent (like "prioritize video conferencing traffic"), and the system automatically translates this into appropriate network configurations.
+- Analytics and visibility: Provides comprehensive visibility into application performance, security threats, and user experience across all branches.
+
+The key benefits of SD-Branch include:
+
+- Simplified operations through unified management
+- Reduced hardware costs and complexity
+- Faster deployment of new branches or services
+- Consistent security policies across all locations
+- Improved application performance
+- Greater network reliability and resilience
+
+This approach is particularly valuable for organizations with many distributed locations that need consistent networking capabilities without maintaining complex infrastructure at each site.
+
+### Fortinet
+
+Fortinet offers an SD-Branch solution as part of its Security-Driven Networking strategy. Their approach centers around integrating security with networking functions in a comprehensive platform called FortiGate Secure SD-WAN. 
+
+The FortiGate devices also support various connection types (broadband, LTE/5G, MPLS) with automatic failover
+
 ## DNS
 Configuration information for your DNS server is stored as a file within a zone on your DNS server. Each file is called a record. The following record types are the most commonly created and used:
 
