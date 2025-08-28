@@ -1,10 +1,11 @@
 # Igor
 
 I can help with Cloud Security, which I do at my current position, and this is where I see my future.
+
 Before that I was doing Cloud/Platform engineering for last 10 years, and another 8 years I spent as a Backend Software engineer.
-This experience gives me pretty clear understanding of each level of OSI model.
 
 Have a passion in security, reliability, automation, observability. Work on strategical and structural improvements, which perfectly fits my personality type — INTJ. 
+
 
 Being high in conscientiousness and dominance (DISC), gives me ability to work in teams and independently, concentrating on deep work and long-term vision. Pretty good at conflicting, negotiating and communicating, as a part of teamwork.
 
